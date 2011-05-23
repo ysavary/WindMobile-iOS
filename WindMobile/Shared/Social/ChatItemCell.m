@@ -99,7 +99,7 @@
     
     //for the shadow, save the state then draw the shadow
     CGContextSaveGState(context);
-    CGContextSetShadow(context, CGSizeMake(shadowSize,shadowSize), 5);
+   // CGContextSetShadow(context, CGSizeMake(shadowSize,shadowSize), 0);
     
     
     
