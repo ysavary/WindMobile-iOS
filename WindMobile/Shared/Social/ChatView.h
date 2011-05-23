@@ -20,6 +20,7 @@
 
 -(void)setChatItems:(NSArray *)items;
 -(void)addTemporaryMessage:(NSString *)message;
+-(void)relayout;
 
 @property () Boolean loading;
 

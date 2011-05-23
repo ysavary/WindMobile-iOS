@@ -184,4 +184,21 @@ NSArray* cells = nil;
 
 }
 
+-(void)relayout
+{
+    ChatItemCell *cell;
+    CGFloat width = [[self superview] bounds].size.width;
+    CGRect newFrame = self.frame;
+    newFrame.size.width = width;
+
+    [(UIScrollView*)[self superview] setContentSize:newFrame.size];
+    for ( cell in cells ) {
+        CGRect frame = cell.frame;
+        frame.size.width = width;
+        cell.frame = frame;
+    }
+    [self setFrame:newFrame];
+    [self setNeedsDisplay];
+}
+
 @end
