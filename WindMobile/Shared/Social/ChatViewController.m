@@ -281,7 +281,9 @@
 
 -(void)activateIndicatorView
 {
+    [indicatorMainView setFrame:self.view.bounds];
     [self.view addSubview:indicatorMainView];
+    [self.view setNeedsDisplay];
     [activityView startAnimating];
 }
 
@@ -390,6 +392,13 @@
 																				 action:@selector(refreshChat:)];
 	self.navigationItem.rightBarButtonItem = refreshItem;
 	[refreshItem release];
+}
+
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [[self chatView] relayout];
+    [scrollView setNeedsDisplay];
+    [scrollView scrollRectToVisible:CGRectMake(0,scrollView.contentSize.height-1,10, 10) animated:YES];
 }
 
 - (void)dealloc 
