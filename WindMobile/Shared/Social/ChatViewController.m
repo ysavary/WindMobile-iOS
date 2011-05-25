@@ -281,7 +281,7 @@
 
 -(void)activateIndicatorView
 {
-    [indicatorMainView setFrame:self.view.bounds];
+    [indicatorMainView setFrame:self.view.window.bounds];
     [self.view addSubview:indicatorMainView];
     [self.view setNeedsDisplay];
     [activityView startAnimating];
