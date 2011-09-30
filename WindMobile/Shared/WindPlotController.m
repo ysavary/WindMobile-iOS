@@ -7,7 +7,7 @@
 //
 
 #import "WindPlotController.h"
-#import "CPGraphHostingView.h"
+#import "CPTGraphHostingView.h"
 #import "WMCellGraphTheme.h"
 #import "iPadHelper.h"
 #import "WindMobileHelper.h"
@@ -41,8 +41,8 @@
     self.info.hidden = NO;
     
     // Create graph from theme
-    graph = [[CPXYGraph alloc] initWithFrame:CGRectZero];
-	CPTheme *theme = [CPTheme themeNamed:kCPDarkGradientTheme];
+    graph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
+	CPTTheme *theme = [CPTTheme themeNamed:kCPTDarkGradientTheme];
     [graph applyTheme:theme];
     self.hostingView.collapsesLayers = NO; // Collapsing layers may improve performance in some cases
     self.hostingView.hostedGraph = graph;
@@ -57,42 +57,42 @@
     graph.plotAreaFrame.paddingRight = 40;
     
     // Setup plot space
-    CPXYPlotSpace *plotSpace = (CPXYPlotSpace *)graph.defaultPlotSpace;
+    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
 	plotSpace.allowsUserInteraction = NO;
-    axisSet = [(CPXYAxisSet *)(graph.axisSet) retain];
+    axisSet = [(CPTXYAxisSet *)(graph.axisSet) retain];
     // Put axis layer to front
     //axisSet.zPosition = CPDefaultZPositionPlotGroup + 1;
     
-    axisSet.xAxis.isFloatingAxis = NO;
+    //axisSet.xAxis.isFloatingAxis = NO;    
+    //axisSet.yAxis.isFloatingAxis = NO;
     
-    axisSet.yAxis.isFloatingAxis = NO;
-    axisSet.yAxis.tickDirection = CPSignPositive;
+    axisSet.yAxis.tickDirection = CPTSignPositive;
     NSNumberFormatter *windFormatter = [[[NSNumberFormatter alloc]init]autorelease];
     [windFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
     axisSet.yAxis.labelFormatter = windFormatter;
-    CPMutableLineStyle *gridLineStyle = [CPMutableLineStyle lineStyle];
+    CPTMutableLineStyle *gridLineStyle = [CPTMutableLineStyle lineStyle];
     gridLineStyle.lineWidth = 1;
-    gridLineStyle.lineColor = [CPColor grayColor];
+    gridLineStyle.lineColor = [CPTColor grayColor];
     axisSet.yAxis.majorGridLineStyle = gridLineStyle;
     axisSet.yAxis.minorTickLineStyle = nil;
 	
 	// Create a Wind Average plot area
-	CPScatterPlot *averageLinePlot = [[[CPScatterPlot alloc] init] autorelease];
+	CPTScatterPlot *averageLinePlot = [[[CPTScatterPlot alloc] init] autorelease];
     averageLinePlot.identifier = PLOT_WIND_AVERAGE_IDENTIFIER;
     averageLinePlot.dataSource = self;
     
-    CPMutableLineStyle *lineStyle = [CPMutableLineStyle lineStyle];
+    CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
     lineStyle.miterLimit = 1.25f;
     lineStyle.lineWidth = 2.5f;
-	lineStyle.lineColor = [CPColor colorWithComponentRed:0.65 green:0.66 blue:0.8 alpha:1.0];
+	lineStyle.lineColor = [CPTColor colorWithComponentRed:0.65 green:0.66 blue:0.8 alpha:1.0];
     averageLinePlot.dataLineStyle = lineStyle;
     
 	// White to blue gradient
-	CPColor *gradientStart = [CPColor colorWithComponentRed:0.14 green:0.17 blue:0.8 alpha:1.0];
-    CPColor *gradientEnd= [CPColor colorWithComponentRed:0.55 green:0.56 blue:0.8 alpha:1.0];
-    CPGradient *areaGradient = [CPGradient gradientWithBeginningColor:gradientStart endingColor:gradientEnd];
+	CPTColor *gradientStart = [CPTColor colorWithComponentRed:0.14 green:0.17 blue:0.8 alpha:1.0];
+    CPTColor *gradientEnd= [CPTColor colorWithComponentRed:0.55 green:0.56 blue:0.8 alpha:1.0];
+    CPTGradient *areaGradient = [CPTGradient gradientWithBeginningColor:gradientStart endingColor:gradientEnd];
     areaGradient.angle = 90.0f;
-    CPFill *areaGradientFill = [CPFill fillWithGradient:areaGradient];
+    CPTFill *areaGradientFill = [CPTFill fillWithGradient:areaGradient];
     averageLinePlot.areaFill = areaGradientFill;
     
     averageLinePlot.areaBaseValue = [[NSDecimalNumber zero] decimalValue];    
@@ -100,14 +100,14 @@
 	[graph addPlot:averageLinePlot];
 	
     // Create a Wind Max plot area
-	CPScatterPlot *maxLinePlot = [[[CPScatterPlot alloc] init] autorelease];
+	CPTScatterPlot *maxLinePlot = [[[CPTScatterPlot alloc] init] autorelease];
     maxLinePlot.identifier = PLOT_WIND_MAX_IDENTIFIER;
     maxLinePlot.dataSource = self;
     
-    lineStyle = [CPMutableLineStyle lineStyle];
+    lineStyle = [CPTMutableLineStyle lineStyle];
     lineStyle.miterLimit = 1.25f;
     lineStyle.lineWidth = 2.5f;
-    lineStyle.lineColor = [CPColor redColor];
+    lineStyle.lineColor = [CPTColor redColor];
     maxLinePlot.dataLineStyle = lineStyle;
 	
     [graph addPlot:maxLinePlot];
@@ -174,13 +174,13 @@
     [self stopRefreshAnimation];
     
     if (([self.stationGraphData.windAverage count] > 0) && ([self.stationGraphData.windMax count] > 0)) {
-        CPXYPlotSpace *plotSpace = (CPXYPlotSpace *)graph.defaultPlotSpace;
+        CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
         
         // Calculate graph range
         [graph reloadData];
         [plotSpace scaleToFitPlots:[graph allPlots]];
-        CPPlotRange *xRange = plotSpace.xRange;
-        CPPlotRange *yRange = plotSpace.yRange;
+        CPTPlotRange *xRange = plotSpace.xRange;
+        CPTPlotRange *yRange = plotSpace.yRange;
         
         double maxValue = [yRange locationDouble] + [yRange lengthDouble];
         // 10 km/h minumum
@@ -195,10 +195,10 @@
         maxValue += 30 * scaleFactor;;
         
         // Update yRange
-        yRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromDouble(0) length:CPDecimalFromDouble(maxValue)];
+        yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(0) length:CPTDecimalFromDouble(maxValue)];
         
         // Put the y axis on the left of the view
-        axisSet.yAxis.orthogonalCoordinateDecimal = CPDecimalFromDouble(xRange.locationDouble + xRange.lengthDouble);
+        axisSet.yAxis.orthogonalCoordinateDecimal = CPTDecimalFromDouble(xRange.locationDouble + xRange.lengthDouble);
         
         // Setup the "zoomed" range
         plotSpace.xRange = xRange;
@@ -213,36 +213,36 @@
         // X interval customization
         switch (self.scale.selectedSegmentIndex) {
             case INTERVAL_4_HOURS:
-                axisSet.xAxis.majorIntervalLength = CPDecimalFromInteger(3600); // 1h
+                axisSet.xAxis.majorIntervalLength = CPTDecimalFromInteger(3600); // 1h
                 axisSet.xAxis.minorTicksPerInterval = 1; // 30 min
                 break;
             case INTERVAL_6_HOURS:
-                axisSet.xAxis.majorIntervalLength = CPDecimalFromInteger(7200); // 2h
+                axisSet.xAxis.majorIntervalLength = CPTDecimalFromInteger(7200); // 2h
                 axisSet.xAxis.minorTicksPerInterval = 3; // 30 min
                 break;
             case INTERVAL_12_HOURS:
-                axisSet.xAxis.majorIntervalLength = CPDecimalFromInteger(14400); // 4h
+                axisSet.xAxis.majorIntervalLength = CPTDecimalFromInteger(14400); // 4h
                 axisSet.xAxis.minorTicksPerInterval = 3; // 1 h
                 break;
             case INTERVAL_24_HOURS:
-                axisSet.xAxis.majorIntervalLength = CPDecimalFromInteger(28800); // 8h
+                axisSet.xAxis.majorIntervalLength = CPTDecimalFromInteger(28800); // 8h
                 axisSet.xAxis.minorTicksPerInterval = 7; // 1 h
                 break;
             case INTERVAL_2_DAYS:
-                axisSet.xAxis.majorIntervalLength = CPDecimalFromInteger(36000); // 10h
+                axisSet.xAxis.majorIntervalLength = CPTDecimalFromInteger(36000); // 10h
                 axisSet.xAxis.minorTicksPerInterval = 9; // 1 h
                 break;
             default:
-                axisSet.xAxis.majorIntervalLength = CPDecimalFromInteger(14400); // 4h
+                axisSet.xAxis.majorIntervalLength = CPTDecimalFromInteger(14400); // 4h
                 axisSet.xAxis.minorTicksPerInterval = 3; // 1 h
                 break;
         }
-        axisSet.xAxis.labelingPolicy = CPAxisLabelingPolicyFixedInterval;
+        axisSet.xAxis.labelingPolicy = CPTAxisLabelingPolicyFixedInterval;
         [axisSet.xAxis relabel];
         
         // X label customization
         NSSet* labelCoordinates = axisSet.xAxis.majorTickLocations;
-        axisSet.xAxis.labelingPolicy = CPAxisLabelingPolicyNone;
+        axisSet.xAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
         NSMutableArray *customLabels = [[[NSMutableArray alloc] initWithCapacity:[labelCoordinates count]]autorelease];
         
         NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc]init]autorelease];
@@ -254,8 +254,8 @@
             
             NSString* dateLabel = [dateFormatter stringFromDate:date];
             
-            CPAxisLabel *newLabel = [[CPAxisLabel alloc] initWithText:dateLabel textStyle:axisSet.xAxis.labelTextStyle];
-            newLabel.tickLocation = CPDecimalFromDouble(location);
+            CPTAxisLabel *newLabel = [[CPTAxisLabel alloc] initWithText:dateLabel textStyle:axisSet.xAxis.labelTextStyle];
+            newLabel.tickLocation = CPTDecimalFromDouble(location);
             newLabel.offset = axisSet.xAxis.labelOffset + axisSet.xAxis.majorTickLength;
             [customLabels addObject:newLabel];
             [newLabel release];
@@ -263,18 +263,18 @@
         
         // Y axis interval customization
         if (maxValue >= 80) {
-            axisSet.yAxis.majorIntervalLength = CPDecimalFromString(@"20");
+            axisSet.yAxis.majorIntervalLength = CPTDecimalFromString(@"20");
         } else if (maxValue >= 20) {
-            axisSet.yAxis.majorIntervalLength = CPDecimalFromString(@"10");
+            axisSet.yAxis.majorIntervalLength = CPTDecimalFromString(@"10");
         } else {
-            axisSet.yAxis.majorIntervalLength = CPDecimalFromString(@"5");
+            axisSet.yAxis.majorIntervalLength = CPTDecimalFromString(@"5");
         }
         
         // Y axis title
         NSString *unit = NSLocalizedStringFromTable(@"WIND_FORMAT", @"WindMobile", nil);
         axisSet.yAxis.title = [NSString stringWithFormat:unit, NSLocalizedStringFromTable(@"CHART_YAXIS_TITLE", @"WindMobile", nil)];
-        CPMutableTextStyle *textStyle = [[[CPMutableTextStyle alloc] init]autorelease];
-        textStyle.color = [CPColor lightGrayColor];
+        CPTMutableTextStyle *textStyle = [[[CPTMutableTextStyle alloc] init]autorelease];
+        textStyle.color = [CPTColor lightGrayColor];
         textStyle.fontSize = 11;
         axisSet.yAxis.titleOffset = 25;
         axisSet.yAxis.titleTextStyle = textStyle;
@@ -333,7 +333,7 @@
 #pragma mark -
 #pragma mark CPPlotDataSource
 
-- (NSUInteger)numberOfRecordsForPlot:(CPPlot *)plot {
+- (NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
 	if(self.stationGraphData == nil){
 		return 0;
 	}
@@ -349,19 +349,23 @@
     return 0;
 }
 
-- (NSNumber *)numberForPlot:(CPPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
+- (NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
 	if ([(NSString *)plot.identifier isEqualToString:PLOT_WIND_AVERAGE_IDENTIFIER]) {
         // Wind average
-		if (fieldEnum == CPScatterPlotFieldX) {
-			return [NSNumber numberWithDouble:[self.stationGraphData.windAverage timeIntervalForPointAtIndex:index]];
-		} else if(fieldEnum == CPScatterPlotFieldY){
+		if (fieldEnum == CPTScatterPlotFieldX) {
+            NSTimeInterval timeInterval = [self.stationGraphData.windAverage timeIntervalForPointAtIndex:index];
+            //NSDate* date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+            //NSLog(@"%@", date);
+			return [NSNumber numberWithDouble:timeInterval];
+		} else if(fieldEnum == CPTScatterPlotFieldY){
 			return [self.stationGraphData.windAverage valueForPointAtIndex:index];
 		}
+        
 	} else if ([(NSString *)plot.identifier isEqualToString:PLOT_WIND_MAX_IDENTIFIER]) { 
         // Wind max
-		if (fieldEnum == CPScatterPlotFieldX) {
+		if (fieldEnum == CPTScatterPlotFieldX) {
 			return [NSNumber numberWithDouble:[self.stationGraphData.windMax timeIntervalForPointAtIndex:index]];
-		} else if(fieldEnum == CPScatterPlotFieldY){
+		} else if(fieldEnum == CPTScatterPlotFieldY){
 			return [self.stationGraphData.windMax valueForPointAtIndex:index];
 		}
 	}
@@ -369,13 +373,13 @@
     return [NSNumber numberWithDouble:0.0];
 }
 
-- (CPLayer *)dataLabelForIndex:(NSUInteger)index {
+- (CPTLayer *)dataLabelForIndex:(NSUInteger)index {
     if (index < [self.stationGraphData.windDirection dataPointCount]) {
         double direction = [[self.stationGraphData.windDirection valueForPointAtIndex:index] doubleValue];
         NSString *directionText = [WindMobileHelper windDirectionLabel:direction];
-        CPTextLayer *label = [[CPTextLayer alloc] initWithText:directionText];
-        CPMutableTextStyle *textStyle = [[CPMutableTextStyle alloc] init];
-        textStyle.color = [CPColor lightGrayColor];
+        CPTTextLayer *label = [[CPTTextLayer alloc] initWithText:directionText];
+        CPTMutableTextStyle *textStyle = [[CPTMutableTextStyle alloc] init];
+        textStyle.color = [CPTColor lightGrayColor];
         label.textStyle = textStyle;
         [textStyle release];
         return [label autorelease];
@@ -383,7 +387,7 @@
     return nil;
 }
 
-- (CPLayer *)dataLabelForPlot:(CPPlot *)plot recordIndex:(NSUInteger)index {
+- (CPTLayer *)dataLabelForPlot:(CPTPlot *)plot recordIndex:(NSUInteger)index {
     if ([(NSString *)plot.identifier isEqualToString:PLOT_WIND_MAX_IDENTIFIER]) {
         static int maxNumberOfLabels = 50;
         
@@ -400,7 +404,7 @@
             int stopIndex = index + margin;
             if ((startIndex >= 0) && (stopIndex < length)) {
                 for (int i = startIndex; i <= stopIndex; i++) {
-                    double value = [[self numberForPlot:plot field:CPScatterPlotFieldY recordIndex:i] doubleValue];
+                    double value = [[self numberForPlot:plot field:CPTScatterPlotFieldY recordIndex:i] doubleValue];
                     values[i-startIndex] = value;
                 }
                 if ([WindMobileHelper isPeak:values size:peakVectorSize]) {

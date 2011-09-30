@@ -13,23 +13,23 @@
 #import "StationDetailMeteoViewController.h"
 
 
-@interface WindPlotController : UIViewController <CPPlotDataSource, WMReSTClientDelegate> {
+@interface WindPlotController : UIViewController <CPTPlotDataSource, WMReSTClientDelegate> {
 	WMReSTClient* client;
 	
-	CPXYGraph *graph;
-	CPGraphHostingView *hostingView;
+	CPTXYGraph *graph;
+	CPTGraphHostingView *hostingView;
 	
 	StationInfo *stationInfo;
 	StationGraphData *stationGraphData;
 	
-	CPXYAxisSet *axisSet;
+	CPTXYAxisSet *axisSet;
 	
 	NSString *duration;
     UIButton *info;
 	UISegmentedControl *scale;
     StationDetailMeteoViewController *masterController;
 }
-@property(retain) IBOutlet CPGraphHostingView* hostingView;
+@property(retain) IBOutlet CPTGraphHostingView* hostingView;
 @property(retain) StationInfo* stationInfo;
 @property(retain) StationGraphData* stationGraphData;
 @property(retain) NSString* duration;
@@ -41,7 +41,7 @@
 - (IBAction)setInterval:(id)sender;
 - (IBAction)showInfo:(id)sender;
 - (IBAction)showScale:(id)sender;
-- (NSUInteger)numberOfRecordsForPlot:(CPPlot *)plot;
+- (NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot;
 @end
 
 @interface WindPlotController ()
