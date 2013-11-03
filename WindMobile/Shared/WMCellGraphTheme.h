@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CPStocksTheme.h"
+#import "CPTTheme.h"
 
-@interface WMCellGraphTheme : CPStocksTheme {
+@interface WMCellGraphTheme : CPTTheme {
 
 }
 

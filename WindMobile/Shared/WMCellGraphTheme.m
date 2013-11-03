@@ -15,9 +15,9 @@
 	return @"WMCell";
 }
 
--(void)applyThemeToBackground:(CPXYGraph *)graph 
+-(void)applyThemeToBackground:(CPTXYGraph *)graph
 {	
-    graph.fill = [CPFill fillWithColor:[CPColor whiteColor]];
+    graph.fill = [CPTFill fillWithColor:[CPTColor whiteColor]];
 }
 
 @end
