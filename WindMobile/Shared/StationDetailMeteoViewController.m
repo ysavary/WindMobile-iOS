@@ -38,6 +38,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Fix for iOS 7: http://stackoverflow.com/questions/18775874/ios-7-status-bar-overlaps-the-view
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 	
 	// Update main info
 	self.title = stationInfo.name;
