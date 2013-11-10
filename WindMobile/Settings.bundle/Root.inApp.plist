@@ -6,19 +6,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>Wind Mobile (1.0)</string>
+			<string>Wind Mobile (1.1)</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
-			<key>FooterText</key>
-			<string>©2011 la-haut.info</string>
-		</dict>
-		<dict>
-			<key>File</key>
-			<string>http://www.la-haut.info/windmobile-ios/</string>
-			<key>Title</key>
-			<string>www.la-haut.info</string>
-			<key>Type</key>
-			<string>IASKOpenURLSpecifier</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -87,6 +77,34 @@
 			<string>Operational only</string>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Contacts</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>IASKMailComposeBodyIsHTML</key>
+			<string>NO</string>
+			<key>IASKMailComposeSubject</key>
+			<string>Wind Mobile 1.1 for iOS</string>
+			<key>IASKMailComposeToRecipents</key>
+			<array>
+				<string>yann@vol-libre-suchet.ch</string>
+			</array>
+			<key>Title</key>
+			<string>yann@vol-libre-suchet.ch</string>
+			<key>Type</key>
+			<string>IASKMailComposeSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>https://plus.google.com/106062358009863154075</string>
+			<key>Title</key>
+			<string>Google+</string>
+			<key>Type</key>
+			<string>IASKOpenURLSpecifier</string>
 		</dict>
 	</array>
 	<key>StringsTable</key>
