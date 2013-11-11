@@ -78,6 +78,7 @@
     averageLinePlot.identifier = PLOT_WIND_AVERAGE_IDENTIFIER;
     averageLinePlot.dataSource = self;
     
+    averageLinePlot.interpolation = CPTScatterPlotInterpolationCurved;
     CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
     lineStyle.miterLimit = 1.25f;
     lineStyle.lineWidth = 2.5f;
@@ -101,6 +102,7 @@
     maxLinePlot.identifier = PLOT_WIND_MAX_IDENTIFIER;
     maxLinePlot.dataSource = self;
     
+    maxLinePlot.interpolation = CPTScatterPlotInterpolationCurved;
     lineStyle = [CPTMutableLineStyle lineStyle];
     lineStyle.miterLimit = 1.25f;
     lineStyle.lineWidth = 2.5f;
