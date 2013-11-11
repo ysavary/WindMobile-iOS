@@ -11,13 +11,13 @@
 
 @interface WindTrendChartView : UIView
 {
-	GraphData *windData;
+    GraphData *windData;
 }
 @property (retain) GraphData *windData;
 @end
 
 @interface WindTrendChartViewController : UIViewController {
-	GraphData *windData;
+    GraphData *windData;
 }
 @property (retain) GraphData *windData;
 @end

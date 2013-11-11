@@ -15,29 +15,29 @@
 @class WindPlotController;
 
 @interface StationDetailMeteoViewController : UIViewController<WMReSTClientDelegate, UIActionSheetDelegate> {
-	WMReSTClient* client;
-	
-	StationInfo* stationInfo;
-	StationData* stationData;
-	
-	// Outlets
-	UILabel *stationName;
-	UILabel *lastUpdated;
-	UILabel *altitude;
-	UILabel *windAverage;
-	UILabel *windMax;
-	UIImageView *windDirectionArrow;
-	UILabel *windHistoryMin;
-	UILabel *windHistoryAverage;
-	UILabel *windHistoryMax;
-	UILabel *airTemperature;
-	UILabel *airHumidity;
-	
-	UIView *windTrendContainer;
-	WindTrendChartViewController *windTrendCtrl;
-	
-	UIView *windPlotView;
-	WindPlotController *windPlotController;
+    WMReSTClient* client;
+    
+    StationInfo* stationInfo;
+    StationData* stationData;
+    
+    // Outlets
+    UILabel *stationName;
+    UILabel *lastUpdated;
+    UILabel *altitude;
+    UILabel *windAverage;
+    UILabel *windMax;
+    UIImageView *windDirectionArrow;
+    UILabel *windHistoryMin;
+    UILabel *windHistoryAverage;
+    UILabel *windHistoryMax;
+    UILabel *airTemperature;
+    UILabel *airHumidity;
+    
+    UIView *windTrendContainer;
+    WindTrendChartViewController *windTrendCtrl;
+    
+    UIView *windPlotView;
+    WindPlotController *windPlotController;
 }
 @property (retain) StationInfo* stationInfo; 
 @property (retain) StationData* stationData; 

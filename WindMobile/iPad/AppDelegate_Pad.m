@@ -14,18 +14,18 @@
 @synthesize window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-	
-	root = [[iPadStationInfoMapVC alloc]initWithNibName:@"StationInfoMapViewController"
+    
+    root = [[iPadStationInfoMapVC alloc]initWithNibName:@"StationInfoMapViewController"
                                                  bundle:nil];
-	window.rootViewController = root;
+    window.rootViewController = root;
     [window makeKeyAndVisible];
-	
-	return YES;
+    
+    return YES;
 }
 
 
 - (void)dealloc {
-	[root release];
+    [root release];
     [window release];
     [super dealloc];
 }

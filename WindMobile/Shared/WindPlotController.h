@@ -14,19 +14,19 @@
 
 
 @interface WindPlotController : UIViewController <CPTPlotDataSource, WMReSTClientDelegate> {
-	WMReSTClient* client;
-	
-	CPTXYGraph *graph;
-	CPTGraphHostingView *hostingView;
-	
-	StationInfo *stationInfo;
-	StationGraphData *stationGraphData;
-	
-	CPTXYAxisSet *axisSet;
-	
-	NSString *duration;
+    WMReSTClient* client;
+    
+    CPTXYGraph *graph;
+    CPTGraphHostingView *hostingView;
+    
+    StationInfo *stationInfo;
+    StationGraphData *stationGraphData;
+    
+    CPTXYAxisSet *axisSet;
+    
+    NSString *duration;
     UIButton *info;
-	UISegmentedControl *scale;
+    UISegmentedControl *scale;
     StationDetailMeteoViewController *masterController;
 }
 @property(retain) IBOutlet CPTGraphHostingView* hostingView;

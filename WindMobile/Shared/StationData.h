@@ -10,17 +10,17 @@
 #import "GraphData.h"
 
 enum  {
-	StationDataStatusUndef = 0,
-	StationDataStatusGreen,
-	StationDataStatusOrange,
-	StationDataStatusRed
+    StationDataStatusUndef = 0,
+    StationDataStatusGreen,
+    StationDataStatusOrange,
+    StationDataStatusRed
 };
 typedef NSUInteger StationDataStatus;
 
 @interface StationData : NSObject {
-	NSDictionary* stationData;
+    NSDictionary* stationData;
 
-	GraphData *windDirection;
+    GraphData *windDirection;
 }
 @property (retain) NSDictionary* stationData;
 // StationData properties:

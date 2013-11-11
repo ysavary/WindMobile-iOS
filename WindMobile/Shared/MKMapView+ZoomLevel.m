@@ -40,8 +40,8 @@
 #pragma mark Helper methods
 
 - (MKCoordinateSpan)coordinateSpanWithMapView:(MKMapView *)mapView
-							 centerCoordinate:(CLLocationCoordinate2D)centerCoordinate
-								 andZoomLevel:(NSUInteger)zoomLevel
+                             centerCoordinate:(CLLocationCoordinate2D)centerCoordinate
+                                 andZoomLevel:(NSUInteger)zoomLevel
 {
     // convert center coordiate to pixel space
     double centerPixelX = [self longitudeToPixelSpaceX:centerCoordinate.longitude];
@@ -79,8 +79,8 @@
 #pragma mark Public methods
 
 - (void)setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate
-				  zoomLevel:(NSUInteger)zoomLevel
-				   animated:(BOOL)animated
+                  zoomLevel:(NSUInteger)zoomLevel
+                   animated:(BOOL)animated
 {
     // clamp large numbers to 28
     zoomLevel = MIN(zoomLevel, 28);

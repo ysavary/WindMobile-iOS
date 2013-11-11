@@ -12,11 +12,11 @@
 @implementation WMCellGraphTheme
 +(NSString *)defaultName 
 {
-	return @"WMCell";
+    return @"WMCell";
 }
 
 -(void)applyThemeToBackground:(CPTXYGraph *)graph
-{	
+{   
     graph.fill = [CPTFill fillWithColor:[CPTColor whiteColor]];
 }
 

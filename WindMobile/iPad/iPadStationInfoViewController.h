@@ -18,7 +18,7 @@
 @end
 
 @interface iPadStationInfoViewController : StationInfoViewController {
-	id <iPadStationInfoDelegate> delegate;
+    id <iPadStationInfoDelegate> delegate;
 }
 @property (nonatomic, assign) IBOutlet id delegate;
 

@@ -30,10 +30,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsChanged:) name:kIASKAppSettingChanged object:nil];
     
-	[self refreshContent:self];
+    [self refreshContent:self];
 }
 
 - (void)viewDidUnload {
@@ -46,7 +46,7 @@
 #pragma mark UIViewController (orientation)
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	return YES;
+    return YES;
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
@@ -62,9 +62,9 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	if (stations != nil) {
-		return [stations count];
-	}
+    if (stations != nil) {
+        return [stations count];
+    }
     return 0;
 }
 
@@ -77,51 +77,51 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
-	StationInfo *data = [stations objectAtIndex:indexPath.row];
+    StationInfo *data = [stations objectAtIndex:indexPath.row];
     
     // Configure the cell...
-	if (data != nil) {
-		if ([iPadHelper isIpad]) {
-			cell.accessoryType = UITableViewCellAccessoryNone;
-		} else {
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		}
+    if (data != nil) {
+        if ([iPadHelper isIpad]) {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
         if ([iPadHelper isIpad] || self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft || self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
             cell.textLabel.text = [data objectForKey:@"@name"];
         } else {
             cell.textLabel.text = [data objectForKey:@"@shortName"];
         }
-		cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"ALTITUDE_FORMAT", 
-																								 @"WindMobile", 
-																								 [NSBundle mainBundle], 
-																								 @"Altitude %@m", 
-																								 @"Altitude format string"),
+        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"ALTITUDE_FORMAT", 
+                                                                                                 @"WindMobile", 
+                                                                                                 [NSBundle mainBundle], 
+                                                                                                 @"Altitude %@m", 
+                                                                                                 @"Altitude format string"),
                                      [data objectForKey:@"@altitude"]];
         
-		switch (data.maintenanceStatusEnum) {
-			case StationInfoStatusGreen:
-				cell.imageView.image = [UIImage imageNamed:@"led_green"];
-				break;
-			case StationInfoStatusOrange:
-				cell.imageView.image = [UIImage imageNamed:@"led_orange"];
-				break;
-			case StationInfoStatusRed:
-				cell.imageView.image = [UIImage imageNamed:@"led_red"];
-				break;
-			default:
-				cell.imageView.image = [UIImage imageNamed:@"led_green"];
-				break;
-		}
-	}
-	
-	return cell;
+        switch (data.maintenanceStatusEnum) {
+            case StationInfoStatusGreen:
+                cell.imageView.image = [UIImage imageNamed:@"led_green"];
+                break;
+            case StationInfoStatusOrange:
+                cell.imageView.image = [UIImage imageNamed:@"led_orange"];
+                break;
+            case StationInfoStatusRed:
+                cell.imageView.image = [UIImage imageNamed:@"led_red"];
+                break;
+            default:
+                cell.imageView.image = [UIImage imageNamed:@"led_green"];
+                break;
+        }
+    }
+    
+    return cell;
 }
 
 #pragma mark -
 #pragma mark TableView delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if(stations != nil && [stations count]>0){
+    if(stations != nil && [stations count]>0){
         StationDetailMeteoViewController *meteoVC = nil;
         StationInfo* stationInfo = [stations objectAtIndex:indexPath.row];
         meteoVC = [[StationDetailMeteoViewController alloc] initWithNibName:@"StationDetailMeteoViewController" bundle:nil];
@@ -129,7 +129,7 @@
         // push controller
         [self.navigationController pushViewController:meteoVC animated:YES];
         [meteoVC release];
-	}
+    }
 }
 
 
@@ -143,8 +143,8 @@
 }
 
 - (void)dealloc {
-	[client release];
-	[stations release];
+    [client release];
+    [stations release];
     [super dealloc];
 }
 
@@ -152,41 +152,41 @@
 #pragma mark Public methods
 
 - (void)refreshContent:(id)sender {
-	[self startRefreshAnimation];
-	if(client == nil){
-		client = [[WMReSTClient alloc] init ];
-	}
-	
-	// (re-)load content
-	[client asyncGetStationList:[[NSUserDefaults standardUserDefaults]boolForKey:STATION_OPERATIONAL_KEY] forSender:self];
+    [self startRefreshAnimation];
+    if(client == nil){
+        client = [[WMReSTClient alloc] init ];
+    }
+    
+    // (re-)load content
+    [client asyncGetStationList:[[NSUserDefaults standardUserDefaults]boolForKey:STATION_OPERATIONAL_KEY] forSender:self];
 }
 
 #pragma mark -
 #pragma mark Private methods
 
 - (void)startRefreshAnimation{
-	// Remove refresh button
-	self.navigationItem.rightBarButtonItem = nil;
-	
-	// activity indicator
-	UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-	[activityIndicator startAnimating];
-	UIBarButtonItem *activityItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
-	[activityIndicator release];
-	self.navigationItem.rightBarButtonItem = activityItem;
-	[activityItem release];
+    // Remove refresh button
+    self.navigationItem.rightBarButtonItem = nil;
+    
+    // activity indicator
+    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    [activityIndicator startAnimating];
+    UIBarButtonItem *activityItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+    [activityIndicator release];
+    self.navigationItem.rightBarButtonItem = activityItem;
+    [activityItem release];
 }
 
 - (void)stopRefreshAnimation{
-	// Stop animation
-	self.navigationItem.rightBarButtonItem = nil;
-	
-	// Put Refresh button on the top left
-	UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-																				 target:self 
-																				 action:@selector(refreshContent:)];
-	self.navigationItem.rightBarButtonItem = refreshItem;
-	[refreshItem release];
+    // Stop animation
+    self.navigationItem.rightBarButtonItem = nil;
+    
+    // Put Refresh button on the top left
+    UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                                 target:self 
+                                                                                 action:@selector(refreshContent:)];
+    self.navigationItem.rightBarButtonItem = refreshItem;
+    [refreshItem release];
 }
 
 - (void)settingsChanged:(NSNotification* )notif {
@@ -199,21 +199,21 @@
 #pragma mark WMReSTClientDelegate
 
 - (void)stationList:(NSArray*)aStationArray{
-	[self stopRefreshAnimation];
+    [self stopRefreshAnimation];
 
-	self.stations = aStationArray;
-	
-	// refresh table
-	[self.tableView reloadData];
+    self.stations = aStationArray;
+    
+    // refresh table
+    [self.tableView reloadData];
 }
 
 - (void)serverError:(NSString *)title message:(NSString *)message{
-	[self stopRefreshAnimation];
+    [self stopRefreshAnimation];
     [WMReSTClient showError:title message:message];
 }
 
 - (void)connectionError:(NSString *)title message:(NSString *)message{
-	[self stopRefreshAnimation];
+    [self stopRefreshAnimation];
     [WMReSTClient showError:title message:message];
 }
 

@@ -51,7 +51,7 @@
     activityItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
     [activityIndicator release];
     
-    NSArray *items = [NSArray arrayWithObjects:settingsItem, flexItem, stationsItem, flexItem, refreshItem, nil];	
+    NSArray *items = [NSArray arrayWithObjects:settingsItem, flexItem, stationsItem, flexItem, refreshItem, nil];   
     [toolbar setItems:items animated:NO];
 }
 
@@ -63,26 +63,26 @@
 }
 
 - (void)startRefreshAnimation{
-	NSRange range;
-	range.location = 0;
-	range.length = [toolbar.items count] -1;
-	NSArray *items = [toolbar.items subarrayWithRange:range];
+    NSRange range;
+    range.location = 0;
+    range.length = [toolbar.items count] -1;
+    NSArray *items = [toolbar.items subarrayWithRange:range];
     
-	[toolbar setItems:[items arrayByAddingObject:activityItem] animated:NO];
+    [toolbar setItems:[items arrayByAddingObject:activityItem] animated:NO];
     
-	[(UIActivityIndicatorView *)activityItem.customView startAnimating];
+    [(UIActivityIndicatorView *)activityItem.customView startAnimating];
     
     // Disable stations popover button
     [stationsItem setEnabled:NO];    
 }
 
 - (void)stopRefreshAnimation{
-	NSRange range;
-	range.location = 0;
-	range.length = [toolbar.items count] -1;
-	NSArray *items = [toolbar.items subarrayWithRange:range];
-	
-	[toolbar setItems:[items arrayByAddingObject:refreshItem] animated:NO];
+    NSRange range;
+    range.location = 0;
+    range.length = [toolbar.items count] -1;
+    NSArray *items = [toolbar.items subarrayWithRange:range];
+    
+    [toolbar setItems:[items arrayByAddingObject:refreshItem] animated:NO];
     
     // Enable stations popover button
     [stationsItem setEnabled:YES];
@@ -146,10 +146,10 @@
     }
     id<MKAnnotation> annotation = [self.mapView.selectedAnnotations objectAtIndex:0];
     
-	StationDetailMeteoViewController *meteo = [[StationDetailMeteoViewController alloc]initWithNibName:@"StationDetailMeteoViewController" bundle:nil];
+    StationDetailMeteoViewController *meteo = [[StationDetailMeteoViewController alloc]initWithNibName:@"StationDetailMeteoViewController" bundle:nil];
     meteo.stationInfo = annotation;
-	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:meteo];
-	[meteo release];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:meteo];
+    [meteo release];
     
     self.detailPopover = [[UIPopoverController alloc] initWithContentViewController:nav];
     [nav release];
@@ -173,9 +173,9 @@
 #pragma mark IASKSettingsDelegate
 
 - (void)settingsViewControllerDidEnd:(IASKAppSettingsViewController*)sender {
-	if (self.settingsPopover != nil) {
-		[self.settingsPopover dismissPopoverAnimated:YES];
-	}
+    if (self.settingsPopover != nil) {
+        [self.settingsPopover dismissPopoverAnimated:YES];
+    }
 }
 
 #pragma mark -
@@ -189,14 +189,14 @@
 
 - (void)dealloc {
     [settingsPopover release];
-	[stationsPopover release];
-	[detailPopover release];    
-	[toolbar release];	
-	[stationsItem release];
-	[flexItem release];	
-	[refreshItem release];	
-	[activityItem release];
-	[settingsItem release];
+    [stationsPopover release];
+    [detailPopover release];    
+    [toolbar release];  
+    [stationsItem release];
+    [flexItem release]; 
+    [refreshItem release];  
+    [activityItem release];
+    [settingsItem release];
     [super dealloc];
 }
 

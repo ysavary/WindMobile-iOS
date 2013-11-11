@@ -13,8 +13,8 @@
 
 @interface AppDelegate_Pad : AppDelegate_WindMobile {
     UIWindow *window;
-	
-	iPadStationInfoMapVC *root;
+    
+    iPadStationInfoMapVC *root;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

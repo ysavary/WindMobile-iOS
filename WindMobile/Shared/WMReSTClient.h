@@ -25,11 +25,11 @@
 
 
 @interface WMReSTClient : CPSReSTClient<CPSReSTClientDelegate> {
-	NSObject<WMReSTClientDelegate>* stationListSender;
-	NSObject<WMReSTClientDelegate>* stationDataSender;
-	NSObject<WMReSTClientDelegate>* stationGraphDataSender;
-	
-	BOOL useMockClient;
+    NSObject<WMReSTClientDelegate>* stationListSender;
+    NSObject<WMReSTClientDelegate>* stationDataSender;
+    NSObject<WMReSTClientDelegate>* stationGraphDataSender;
+    
+    BOOL useMockClient;
 }
 @property (retain,readwrite) NSObject<WMReSTClientDelegate>* stationListSender;
 @property (retain,readwrite) NSObject<WMReSTClientDelegate>* stationDataSender;

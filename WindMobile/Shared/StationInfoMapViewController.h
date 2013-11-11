@@ -15,11 +15,11 @@
 @class MapViewController;
 
 @interface StationInfoMapViewController : UIViewController <WMReSTClientDelegate, MKMapViewDelegate, UITabBarControllerDelegate> {
-	WMReSTClient *client;
-	
-	MKMapView *mapView;
+    WMReSTClient *client;
+    
+    MKMapView *mapView;
 @protected
-	StationInfo *selectedStation;
+    StationInfo *selectedStation;
 }
 @property (retain) IBOutlet MKMapView *mapView;
 @property (readonly) NSArray *stations;

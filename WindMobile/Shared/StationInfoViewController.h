@@ -10,8 +10,8 @@
 #import "WMReSTClient.h"
 
 @interface StationInfoViewController : UITableViewController<WMReSTClientDelegate> {
-	WMReSTClient* client;
-	NSArray *stations;
+    WMReSTClient* client;
+    NSArray *stations;
 }
 @property (retain)NSArray *stations;
 - (void)refreshContent:(id)sender;

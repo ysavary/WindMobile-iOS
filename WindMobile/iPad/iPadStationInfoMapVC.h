@@ -13,14 +13,14 @@
 #import "iPadStationInfoViewController.h"
 
 @interface iPadStationInfoMapVC : StationInfoMapViewController<IASKSettingsDelegate, iPadStationInfoDelegate> {
-	UIPopoverController *settingsPopover;
-	UIPopoverController *stationsPopover;
+    UIPopoverController *settingsPopover;
+    UIPopoverController *stationsPopover;
     UIPopoverController *detailPopover;
     
     UIToolbar *toolbar;
     UIBarButtonItem *settingsItem;
     UIBarButtonItem *stationsItem;
-	UIBarButtonItem *refreshItem;
+    UIBarButtonItem *refreshItem;
     UIBarButtonItem *activityItem;    
     UIBarButtonItem *flexItem;
 }

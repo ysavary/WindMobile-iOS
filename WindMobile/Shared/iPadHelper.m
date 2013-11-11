@@ -11,17 +11,17 @@
 @implementation iPadHelper
 
 +(BOOL)isIpad{
-	NSString* model = [[UIDevice currentDevice]model];
-	if([model rangeOfString:@"iPad"].location != NSNotFound){
-		return YES;
-	}
-	return NO;
+    NSString* model = [[UIDevice currentDevice]model];
+    if([model rangeOfString:@"iPad"].location != NSNotFound){
+        return YES;
+    }
+    return NO;
 }
 
 +(BOOL)isPresentedModally:(UIViewController*)viewController {
     return (viewController.navigationController != nil &&
-			viewController.navigationController.parentViewController != nil &&
-			viewController.navigationController.parentViewController.modalViewController == viewController.navigationController);
+            viewController.navigationController.parentViewController != nil &&
+            viewController.navigationController.parentViewController.modalViewController == viewController.navigationController);
 }
 
 @end

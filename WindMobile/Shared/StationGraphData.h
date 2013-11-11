@@ -8,9 +8,9 @@
 
 /* Sample Data:
  <chart duration="14400" lastUpdate="2011-02-13T17:00:00+0100">
-	<serie name="windAverage"/>
-	<serie name="windMax"/>
-	<serie name="windDirection"/>
+    <serie name="windAverage"/>
+    <serie name="windMax"/>
+    <serie name="windDirection"/>
  </chart>
  */
 
@@ -19,12 +19,12 @@
 #import "GraphData.h"
 
 @interface StationGraphData : NSObject {
-	NSDictionary* data;
-	
-	GraphData *windAverage;
-	GraphData *windMax;
-	GraphData *windDirection;
-	
+    NSDictionary* data;
+    
+    GraphData *windAverage;
+    GraphData *windMax;
+    GraphData *windDirection;
+    
 }
 @property (retain) NSDictionary* data;
 

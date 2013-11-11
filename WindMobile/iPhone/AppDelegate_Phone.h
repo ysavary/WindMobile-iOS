@@ -10,8 +10,8 @@
 #import "AppDelegate_WindMobile.h"
 
 @interface AppDelegate_Phone : AppDelegate_WindMobile {
-	UIWindow *window;
-	UITabBarController *tabBarController;
+    UIWindow *window;
+    UITabBarController *tabBarController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

@@ -42,11 +42,11 @@
     
     // Create graph from theme
     graph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
-	CPTTheme *theme = [CPTTheme themeNamed:kCPTDarkGradientTheme];
+    CPTTheme *theme = [CPTTheme themeNamed:kCPTDarkGradientTheme];
     [graph applyTheme:theme];
     self.hostingView.collapsesLayers = NO; // Collapsing layers may improve performance in some cases
     self.hostingView.hostedGraph = graph;
-	
+    
     graph.paddingLeft = 0.0;
     graph.paddingTop = 0.0;
     graph.paddingRight = 0.0;
@@ -58,7 +58,7 @@
     
     // Setup plot space
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
-	plotSpace.allowsUserInteraction = NO;
+    plotSpace.allowsUserInteraction = NO;
     axisSet = [(CPTXYAxisSet *)(graph.axisSet) retain];
     // Put axis layer to front
     //axisSet.zPosition = CPDefaultZPositionPlotGroup + 1;
@@ -72,20 +72,20 @@
     gridLineStyle.lineColor = [CPTColor grayColor];
     axisSet.yAxis.majorGridLineStyle = gridLineStyle;
     axisSet.yAxis.minorTickLineStyle = nil;
-	
-	// Create a Wind Average plot area
-	CPTScatterPlot *averageLinePlot = [[[CPTScatterPlot alloc] init] autorelease];
+    
+    // Create a Wind Average plot area
+    CPTScatterPlot *averageLinePlot = [[[CPTScatterPlot alloc] init] autorelease];
     averageLinePlot.identifier = PLOT_WIND_AVERAGE_IDENTIFIER;
     averageLinePlot.dataSource = self;
     
     CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
     lineStyle.miterLimit = 1.25f;
     lineStyle.lineWidth = 2.5f;
-	lineStyle.lineColor = [CPTColor colorWithComponentRed:0.65 green:0.66 blue:0.8 alpha:1.0];
+    lineStyle.lineColor = [CPTColor colorWithComponentRed:0.65 green:0.66 blue:0.8 alpha:1.0];
     averageLinePlot.dataLineStyle = lineStyle;
     
-	// White to blue gradient
-	CPTColor *gradientStart = [CPTColor colorWithComponentRed:0.14 green:0.17 blue:0.8 alpha:1.0];
+    // White to blue gradient
+    CPTColor *gradientStart = [CPTColor colorWithComponentRed:0.14 green:0.17 blue:0.8 alpha:1.0];
     CPTColor *gradientEnd= [CPTColor colorWithComponentRed:0.55 green:0.56 blue:0.8 alpha:1.0];
     CPTGradient *areaGradient = [CPTGradient gradientWithBeginningColor:gradientStart endingColor:gradientEnd];
     areaGradient.angle = 90.0f;
@@ -94,10 +94,10 @@
     
     averageLinePlot.areaBaseValue = [[NSDecimalNumber zero] decimalValue];    
     
-	[graph addPlot:averageLinePlot];
-	
+    [graph addPlot:averageLinePlot];
+    
     // Create a Wind Max plot area
-	CPTScatterPlot *maxLinePlot = [[[CPTScatterPlot alloc] init] autorelease];
+    CPTScatterPlot *maxLinePlot = [[[CPTScatterPlot alloc] init] autorelease];
     maxLinePlot.identifier = PLOT_WIND_MAX_IDENTIFIER;
     maxLinePlot.dataSource = self;
     
@@ -106,9 +106,9 @@
     lineStyle.lineWidth = 2.5f;
     lineStyle.lineColor = [CPTColor redColor];
     maxLinePlot.dataLineStyle = lineStyle;
-	
+    
     [graph addPlot:maxLinePlot];
-	
+    
     // Load data points
     self.duration = DEFAULT_DURATION; 
     [self refreshContent:self];
@@ -129,33 +129,33 @@
 
 
 - (void)dealloc {
-	[client release];
-	[graph release];
-	[hostingView release];
-	[stationInfo release];
-	[stationGraphData release];
-	[axisSet release];
-	[duration release];
-	[scale release];
-	[info release];
-	[masterController release];
-	
+    [client release];
+    [graph release];
+    [hostingView release];
+    [stationInfo release];
+    [stationGraphData release];
+    [axisSet release];
+    [duration release];
+    [scale release];
+    [info release];
+    [masterController release];
+    
     [super dealloc];
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-	return YES;
+    return YES;
 }
 
 #pragma mark -
 #pragma mark Rest Graph Data
 
 - (void)refreshContent:(id)sender{
-	[self startRefreshAnimation];
-	if(client == nil){
-		client = [[WMReSTClient alloc] init ];
-	}
-	[client asyncGetStationGraphData:self.stationInfo.stationID duration:self.duration forSender:self];
+    [self startRefreshAnimation];
+    if(client == nil){
+        client = [[WMReSTClient alloc] init ];
+    }
+    [client asyncGetStationGraphData:self.stationInfo.stationID duration:self.duration forSender:self];
 }
 
 #pragma mark -
@@ -166,7 +166,7 @@
 }
 
 - (void)setupChart:(StationGraphData*)data {
-	self.stationGraphData = data;
+    self.stationGraphData = data;
     
     [self stopRefreshAnimation];
     
@@ -281,12 +281,12 @@
 }
 
 - (void)serverError:(NSString *)title message:(NSString *)message{
-	[self stopRefreshAnimation];
+    [self stopRefreshAnimation];
     [WMReSTClient showError:title message:message];
 }
 
 - (void)connectionError:(NSString *)title message:(NSString *)message{
-	[self stopRefreshAnimation];
+    [self stopRefreshAnimation];
     [WMReSTClient showError:title message:message];
 }
 
@@ -306,12 +306,12 @@
         [self.masterController startRefreshAnimation];
     }    
     
-	self.info.hidden = YES;
+    self.info.hidden = YES;
     self.scale.hidden = YES;
 }
 
 - (void)stopRefreshAnimation{
-	if([iPadHelper isIpad]){
+    if([iPadHelper isIpad]){
         // Stop animation
         self.navigationItem.rightBarButtonItem = nil;
         
@@ -320,9 +320,9 @@
                                                                                      action:@selector(refreshContent:)];
         self.navigationItem.rightBarButtonItem = refreshItem;
         [refreshItem release];
-	} else { // iPhone
+    } else { // iPhone
         [self.masterController stopRefreshAnimation];
-	}
+    }
     
     [self showInfo:self];
 }
@@ -331,37 +331,37 @@
 #pragma mark CPPlotDataSource
 
 - (NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
-	if(self.stationGraphData == nil){
-		return 0;
-	}
+    if(self.stationGraphData == nil){
+        return 0;
+    }
     
     if ([(NSString *)plot.identifier isEqualToString:PLOT_WIND_AVERAGE_IDENTIFIER]) {
         // Wind average
         return [self.stationGraphData.windAverage dataPointCount];
-	} else if ([(NSString *)plot.identifier isEqualToString:PLOT_WIND_MAX_IDENTIFIER]) { 
+    } else if ([(NSString *)plot.identifier isEqualToString:PLOT_WIND_MAX_IDENTIFIER]) { 
         // Wind max
         return [self.stationGraphData.windMax dataPointCount];
-	}
+    }
     
     return 0;
 }
 
 - (NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
-	if ([(NSString *)plot.identifier isEqualToString:PLOT_WIND_AVERAGE_IDENTIFIER]) {
+    if ([(NSString *)plot.identifier isEqualToString:PLOT_WIND_AVERAGE_IDENTIFIER]) {
         // Wind average
-		if (fieldEnum == CPTScatterPlotFieldX) {
-			return [NSNumber numberWithDouble:[self.stationGraphData.windAverage timeIntervalForPointAtIndex:index]];
-		} else if(fieldEnum == CPTScatterPlotFieldY){
-			return [self.stationGraphData.windAverage valueForPointAtIndex:index];
-		}
-	} else if ([(NSString *)plot.identifier isEqualToString:PLOT_WIND_MAX_IDENTIFIER]) { 
+        if (fieldEnum == CPTScatterPlotFieldX) {
+            return [NSNumber numberWithDouble:[self.stationGraphData.windAverage timeIntervalForPointAtIndex:index]];
+        } else if(fieldEnum == CPTScatterPlotFieldY){
+            return [self.stationGraphData.windAverage valueForPointAtIndex:index];
+        }
+    } else if ([(NSString *)plot.identifier isEqualToString:PLOT_WIND_MAX_IDENTIFIER]) { 
         // Wind max
-		if (fieldEnum == CPTScatterPlotFieldX) {
-			return [NSNumber numberWithDouble:[self.stationGraphData.windMax timeIntervalForPointAtIndex:index]];
-		} else if(fieldEnum == CPTScatterPlotFieldY){
-			return [self.stationGraphData.windMax valueForPointAtIndex:index];
-		}
-	}
+        if (fieldEnum == CPTScatterPlotFieldX) {
+            return [NSNumber numberWithDouble:[self.stationGraphData.windMax timeIntervalForPointAtIndex:index]];
+        } else if(fieldEnum == CPTScatterPlotFieldY){
+            return [self.stationGraphData.windMax valueForPointAtIndex:index];
+        }
+    }
     
     return [NSNumber numberWithDouble:0.0];
 }
@@ -418,53 +418,53 @@
 #pragma mark Buttons
 
 - (IBAction)setInterval:(id)sender {
-	// new duration
-	NSString* newDuration;
-	switch (self.scale.selectedSegmentIndex) {
-		case INTERVAL_4_HOURS:
-			newDuration = @"14400"; // 4h = 60 * 60 * 4 seconds
-			break;
-		case INTERVAL_6_HOURS:
-			newDuration = @"21600"; // 6h = 60 * 60 * 6 seconds
-			break;
-		case INTERVAL_12_HOURS:
-			newDuration = @"43200"; // 12h = 60 * 60 * 12 seconds
-			break;
-		case INTERVAL_24_HOURS:
-			newDuration = @"86400"; // 1d = 24h = 60 * 60 * 24 seconds
-			break;
-		case INTERVAL_2_DAYS:
-			newDuration = @"172800"; // 2d = 48h = 60 * 60 * 48 seconds
-			break;
-		default:
-			newDuration = DEFAULT_DURATION;
-			break;
-	}
+    // new duration
+    NSString* newDuration;
+    switch (self.scale.selectedSegmentIndex) {
+        case INTERVAL_4_HOURS:
+            newDuration = @"14400"; // 4h = 60 * 60 * 4 seconds
+            break;
+        case INTERVAL_6_HOURS:
+            newDuration = @"21600"; // 6h = 60 * 60 * 6 seconds
+            break;
+        case INTERVAL_12_HOURS:
+            newDuration = @"43200"; // 12h = 60 * 60 * 12 seconds
+            break;
+        case INTERVAL_24_HOURS:
+            newDuration = @"86400"; // 1d = 24h = 60 * 60 * 24 seconds
+            break;
+        case INTERVAL_2_DAYS:
+            newDuration = @"172800"; // 2d = 48h = 60 * 60 * 48 seconds
+            break;
+        default:
+            newDuration = DEFAULT_DURATION;
+            break;
+    }
     
     [self showInfo:self];
-	
-	// apply new duration
-	if([newDuration compare:self.duration] !=  NSOrderedSame){
-		self.duration = newDuration;
-		[self refreshContent:sender];
-	}
+    
+    // apply new duration
+    if([newDuration compare:self.duration] !=  NSOrderedSame){
+        self.duration = newDuration;
+        [self refreshContent:sender];
+    }
 }
 
 - (IBAction)showInfo:(id)sender {
-	self.scale.hidden = YES;
-	self.info.hidden = NO;
+    self.scale.hidden = YES;
+    self.info.hidden = NO;
 }
 
 - (IBAction)showScale:(id)sender {
-	self.info.hidden = YES;
-	self.scale.hidden = NO;
+    self.info.hidden = YES;
+    self.scale.hidden = NO;
 }
 
 - (void)setupButtons {
-	for (int i=0; i < self.scale.numberOfSegments; i++) {
+    for (int i=0; i < self.scale.numberOfSegments; i++) {
         NSString *value = [NSString stringWithFormat:DURATION_FORMAT, i];
-		[self.scale setTitle:NSLocalizedStringFromTable(value, @"WindMobile", nil) forSegmentAtIndex:i];
-	}
+        [self.scale setTitle:NSLocalizedStringFromTable(value, @"WindMobile", nil) forSegmentAtIndex:i];
+    }
 }
 
 @end

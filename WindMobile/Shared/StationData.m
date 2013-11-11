@@ -32,118 +32,118 @@
 @synthesize windDirection;
 
 - (id)initWithDictionary:(NSDictionary *)aDictionary{
-	self = [super init];
-	if(self != nil && aDictionary != nil){
-		stationData = [aDictionary retain];
-		
-		// Create graphs
-		NSDictionary *chart = [stationData objectForKey:STATION_DATA_WIND_CHART_KEY];
-		if(chart != nil){
-			NSNumber* aDuration = [NSNumber numberWithInteger:[(NSString*)([chart objectForKey:STATION_DATA_GRAPH_DURATION_KEY]) integerValue]];
-			NSDictionary *serie = [chart objectForKey:STATION_DATA_GRAPH_SERIE_KEY];
-			windDirection = [[GraphData alloc] initWithDictionary:serie andDuration:aDuration];
-		}
-		
-	}
-	return self;
+    self = [super init];
+    if(self != nil && aDictionary != nil){
+        stationData = [aDictionary retain];
+        
+        // Create graphs
+        NSDictionary *chart = [stationData objectForKey:STATION_DATA_WIND_CHART_KEY];
+        if(chart != nil){
+            NSNumber* aDuration = [NSNumber numberWithInteger:[(NSString*)([chart objectForKey:STATION_DATA_GRAPH_DURATION_KEY]) integerValue]];
+            NSDictionary *serie = [chart objectForKey:STATION_DATA_GRAPH_SERIE_KEY];
+            windDirection = [[GraphData alloc] initWithDictionary:serie andDuration:aDuration];
+        }
+        
+    }
+    return self;
 }
 
 - (void)dealloc {
-	[stationData release];
-	[windDirection release];
-	[super dealloc];
+    [stationData release];
+    [windDirection release];
+    [super dealloc];
 }
 
 #pragma mark -
 #pragma mark - NSDictionary composition
 
 - (NSUInteger)count{
-	return [stationData count];
+    return [stationData count];
 }
 
 - (id)objectForKey:(id)aKey{
-	return [stationData objectForKey:aKey];
+    return [stationData objectForKey:aKey];
 }
 
 - (NSEnumerator *)keyEnumerator{
-	return [stationData keyEnumerator];
+    return [stationData keyEnumerator];
 }
 
 - (NSString *)description{
-	return [NSString stringWithFormat:@"StationData %@", [stationData description]];
+    return [NSString stringWithFormat:@"StationData %@", [stationData description]];
 }
 
 #pragma mark -
 #pragma mark - StationData properties
 @dynamic status;
 - (NSString*)status{
-	return (NSString*)[stationData objectForKey:STATION_DATA_STATUS_KEY];
+    return (NSString*)[stationData objectForKey:STATION_DATA_STATUS_KEY];
 }
 
 @dynamic statusEnum;
 - (StationDataStatus)statusEnum{
-	if([self.status compare:STATION_DATA_VALUE_GREEN] == NSOrderedSame){
-		return StationDataStatusGreen;
-	} else if([self.status compare:STATION_DATA_VALUE_ORANGE] == NSOrderedSame){
-		return StationDataStatusOrange;
-	} else if([self.status compare:STATION_DATA_VALUE_RED] == NSOrderedSame){
-		return StationDataStatusRed;
-	}
-	// default:
-	return StationDataStatusUndef;
+    if([self.status compare:STATION_DATA_VALUE_GREEN] == NSOrderedSame){
+        return StationDataStatusGreen;
+    } else if([self.status compare:STATION_DATA_VALUE_ORANGE] == NSOrderedSame){
+        return StationDataStatusOrange;
+    } else if([self.status compare:STATION_DATA_VALUE_RED] == NSOrderedSame){
+        return StationDataStatusRed;
+    }
+    // default:
+    return StationDataStatusUndef;
 }
 
 @dynamic lastUpdate;
 - (NSString*)lastUpdate{
-	return [NSString stringWithFormat:@"%@",
-			  [WindMobileHelper naturalTimeSinceDate:
-			   [WindMobileHelper decodeDateFromString:[stationData objectForKey:STATION_DATA_LAST_UPDATE_KEY]]]];
+    return [NSString stringWithFormat:@"%@",
+              [WindMobileHelper naturalTimeSinceDate:
+               [WindMobileHelper decodeDateFromString:[stationData objectForKey:STATION_DATA_LAST_UPDATE_KEY]]]];
 }
 
 @dynamic windAverage;
 - (NSString*)windAverage{
-	return [stationData objectForKey:STATION_DATA_WIND_AVERAGE_KEY];
+    return [stationData objectForKey:STATION_DATA_WIND_AVERAGE_KEY];
 }
 
 @dynamic windMax;
 - (NSString*)windMax{
-	return [stationData objectForKey:STATION_DATA_WIND_MAX_KEY];
+    return [stationData objectForKey:STATION_DATA_WIND_MAX_KEY];
 }
 
 
 @dynamic windTrend;
 - (NSString*)windTrend{
-	return [stationData objectForKey:STATION_DATA_WIND_TREND_KEY];
+    return [stationData objectForKey:STATION_DATA_WIND_TREND_KEY];
 }
 
 
 @dynamic windHistoryMin;
 - (NSString*)windHistoryMin{
-	return [stationData objectForKey:STATION_DATA_WIND_HISTORY_MIN_KEY];
+    return [stationData objectForKey:STATION_DATA_WIND_HISTORY_MIN_KEY];
 }
 
 
 @dynamic windHistoryMax;
 - (NSString*)windHistoryMax{
-	return [stationData objectForKey:STATION_DATA_WIND_HISTORY_MAX_KEY];
+    return [stationData objectForKey:STATION_DATA_WIND_HISTORY_MAX_KEY];
 }
 
 
 @dynamic windHistoryAverage;
 - (NSString*)windHistoryAverage{
-	return [stationData objectForKey:STATION_DATA_WIND_HISTORY_AVERAGE_KEY];
+    return [stationData objectForKey:STATION_DATA_WIND_HISTORY_AVERAGE_KEY];
 }
 
 
 @dynamic airTemperature;
 - (NSString*)airTemperature{
-	return [stationData objectForKey:STATION_DATA_WIND_AIR_TEMPERATURE_KEY];
+    return [stationData objectForKey:STATION_DATA_WIND_AIR_TEMPERATURE_KEY];
 }
 
 
 @dynamic airHumidity;
 - (NSString*)airHumidity{
-	return [stationData objectForKey:STATION_DATA_WIND_AIR_HUMIDITY_KEY];
+    return [stationData objectForKey:STATION_DATA_WIND_AIR_HUMIDITY_KEY];
 }
 
 

@@ -20,8 +20,8 @@
 }
 
 - (NSString *)subtitle {
-	return [NSString stringWithFormat:NSLocalizedStringFromTable(@"ALTITUDE_SHORT_FORMAT", @"WindMobile", nil),
-			self.altitude];
+    return [NSString stringWithFormat:NSLocalizedStringFromTable(@"ALTITUDE_SHORT_FORMAT", @"WindMobile", nil),
+            self.altitude];
 }
 
 @end

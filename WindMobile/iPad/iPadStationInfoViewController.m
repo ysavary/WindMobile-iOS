@@ -14,7 +14,7 @@
 
 // Override
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if(stations != nil && [stations count]>0){
+    if(stations != nil && [stations count]>0){
         StationInfo* stationInfo = [stations objectAtIndex:indexPath.row];
         [delegate selectStation:stationInfo];
         [delegate dismissStationsPopover];

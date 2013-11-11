@@ -8,37 +8,37 @@
 
 /* Sample data:
  <serie name="windAverage">
-	<points>
-		<date>1297598400000</date>
-		<value>10.5</value>
-	</points>
-	<points>
-		<date>1297599000000</date>
-		<value>8.8</value>
-	</points>
+    <points>
+        <date>1297598400000</date>
+        <value>10.5</value>
+    </points>
+    <points>
+        <date>1297599000000</date>
+        <value>8.8</value>
+    </points>
  </serie>
 */
 
 #import <Foundation/Foundation.h>
 
 enum {
-	GraphPointTypeAverage = 0,
-	GraphPointTypeMax,
-	GraphPointTypeDirection
+    GraphPointTypeAverage = 0,
+    GraphPointTypeMax,
+    GraphPointTypeDirection
 };
 typedef NSUInteger GraphPointType;
 
 enum  {
-	GraphRangeForType = 0,
-	GraphRangeForDate,
-	GraphRangeForValue
+    GraphRangeForType = 0,
+    GraphRangeForDate,
+    GraphRangeForValue
 };
 typedef NSUInteger GraphRangeType;
 
 @interface GraphData : NSObject {
-	NSDictionary* data;
-	NSNumber* duration;
-	NSNumber* graphType;
+    NSDictionary* data;
+    NSNumber* duration;
+    NSNumber* graphType;
 }
 @property (retain) NSDictionary* data;
 

@@ -10,17 +10,17 @@
 #import <CoreLocation/CoreLocation.h>
 
 enum  {
-	StationInfoStatusUndef = 0,
-	StationInfoStatusGreen,
-	StationInfoStatusOrange,
-	StationInfoStatusRed
+    StationInfoStatusUndef = 0,
+    StationInfoStatusGreen,
+    StationInfoStatusOrange,
+    StationInfoStatusRed
 };
 typedef NSUInteger StationInfoStatus;
 
 
 @interface StationInfo : NSObject {
-	NSDictionary* stationInfo;
-	CLLocationCoordinate2D coordinate;
+    NSDictionary* stationInfo;
+    CLLocationCoordinate2D coordinate;
 }
 @property (retain) NSDictionary* stationInfo;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate; 

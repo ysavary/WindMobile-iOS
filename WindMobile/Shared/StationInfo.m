@@ -26,87 +26,87 @@
 @synthesize coordinate;
 
 - (id)initWithDictionary:(NSDictionary *)aDictionary{
-	self = [super init];
-	if(self != nil && aDictionary != nil){
-		stationInfo = [aDictionary retain];
-		//coordinate
-		NSString *wgs84Latitude = [stationInfo objectForKey:@"@wgs84Latitude"];
-		NSString *wgs84Longitude = [stationInfo objectForKey:@"@wgs84Longitude"];
-		
-		if(wgs84Latitude != nil && wgs84Longitude != nil){
-			coordinate.latitude = [wgs84Latitude doubleValue];
-			coordinate.longitude = [wgs84Longitude doubleValue];
-		}
-	}
-	return self;
+    self = [super init];
+    if(self != nil && aDictionary != nil){
+        stationInfo = [aDictionary retain];
+        //coordinate
+        NSString *wgs84Latitude = [stationInfo objectForKey:@"@wgs84Latitude"];
+        NSString *wgs84Longitude = [stationInfo objectForKey:@"@wgs84Longitude"];
+        
+        if(wgs84Latitude != nil && wgs84Longitude != nil){
+            coordinate.latitude = [wgs84Latitude doubleValue];
+            coordinate.longitude = [wgs84Longitude doubleValue];
+        }
+    }
+    return self;
 }
 
 - (void)dealloc {
-	[stationInfo release];
-	[super dealloc];
+    [stationInfo release];
+    [super dealloc];
 }
 
 #pragma mark -
 #pragma mark - NSDictionary composition
 
 - (NSUInteger)count{
-	return [stationInfo count];
+    return [stationInfo count];
 }
 
 - (id)objectForKey:(id)aKey{
-	return [stationInfo objectForKey:aKey];
+    return [stationInfo objectForKey:aKey];
 }
 
 - (NSEnumerator *)keyEnumerator{
-	return [stationInfo keyEnumerator];
+    return [stationInfo keyEnumerator];
 }
 
 - (NSString *)description{
-	return [NSString stringWithFormat:@"StationInfo %f,%f %@", coordinate.longitude,coordinate.latitude ,[stationInfo description]];
+    return [NSString stringWithFormat:@"StationInfo %f,%f %@", coordinate.longitude,coordinate.latitude ,[stationInfo description]];
 }
 
 #pragma mark -
 #pragma mark - StationInfo properties
 @dynamic name;
 - (NSString*)name{
-	return (NSString*)[stationInfo objectForKey:STATION_INFO_NAME_KEY];
+    return (NSString*)[stationInfo objectForKey:STATION_INFO_NAME_KEY];
 }
 
 @dynamic shortName;
 - (NSString*)shortName{
-	return (NSString*)[stationInfo objectForKey:STATION_INFO_SHORT_NAME_KEY];
+    return (NSString*)[stationInfo objectForKey:STATION_INFO_SHORT_NAME_KEY];
 }
 
 @dynamic altitude;
 - (NSString*)altitude{
-	return (NSString*)[stationInfo objectForKey:STATION_INFO_ALTITUDE_KEY];
+    return (NSString*)[stationInfo objectForKey:STATION_INFO_ALTITUDE_KEY];
 }
 
 @dynamic stationID;
 - (NSString*)stationID{
-	return (NSString*)[stationInfo objectForKey:STATION_INFO_ID_KEY];
+    return (NSString*)[stationInfo objectForKey:STATION_INFO_ID_KEY];
 }
 
 @dynamic maintenanceStatus;
 - (NSString*)maintenanceStatus{
-	return (NSString*)[stationInfo objectForKey:STATION_INFO_MAINTENANCE_STATUS_KEY];
+    return (NSString*)[stationInfo objectForKey:STATION_INFO_MAINTENANCE_STATUS_KEY];
 }
 
 @dynamic maintenanceStatusEnum;
 - (StationInfoStatus)maintenanceStatusEnum{
-	if(self.maintenanceStatus == nil){
-		return StationInfoStatusUndef;
-	}
-	
-	if([self.maintenanceStatus compare:STATION_INFO_VALUE_GREEN] == NSOrderedSame){
-		return StationInfoStatusGreen;
-	} else if([self.maintenanceStatus compare:STATION_INFO_VALUE_ORANGE] == NSOrderedSame){
-		return StationInfoStatusOrange;
-	} else if([self.maintenanceStatus compare:STATION_INFO_VALUE_RED] == NSOrderedSame){
-		return StationInfoStatusRed;
-	}
-	// default:
-	return StationInfoStatusUndef;
+    if(self.maintenanceStatus == nil){
+        return StationInfoStatusUndef;
+    }
+    
+    if([self.maintenanceStatus compare:STATION_INFO_VALUE_GREEN] == NSOrderedSame){
+        return StationInfoStatusGreen;
+    } else if([self.maintenanceStatus compare:STATION_INFO_VALUE_ORANGE] == NSOrderedSame){
+        return StationInfoStatusOrange;
+    } else if([self.maintenanceStatus compare:STATION_INFO_VALUE_RED] == NSOrderedSame){
+        return StationInfoStatusRed;
+    }
+    // default:
+    return StationInfoStatusUndef;
 }
 
 @end
