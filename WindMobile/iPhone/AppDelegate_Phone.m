@@ -15,18 +15,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	
+    self.window.rootViewController = tabBarController;
+    
     // Override point for customization after application launch
-	[self.window addSubview:tabBarController.view];
+    [self.window addSubview:tabBarController.view];
     [self.window makeKeyAndVisible];
 	
-	return YES;
+    return YES;
 }
 
 
 - (void)dealloc {
-	[tabBarController release];
-	[window release];
-	[super dealloc];
+    [tabBarController release];
+    [window release];
+    [super dealloc];
 }
 
 
