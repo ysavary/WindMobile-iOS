@@ -272,9 +272,6 @@ static int MAP_INDEX = 1;
 }
 
 - (void)startRefreshAnimation{
-    // Remove refresh button
-    self.navigationItem.rightBarButtonItem = nil;
-    
     // Start animation
     UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
     [activityIndicator startAnimating];
@@ -285,8 +282,9 @@ static int MAP_INDEX = 1;
 }
 
 - (void)stopRefreshAnimation{
-    // Stop animation
-    self.navigationItem.rightBarButtonItem = nil;
+    UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                                 target:self
+                                                                                 action:@selector(refreshContent:)];
     
     // Graph or refresh button
     if([iPadHelper isIpad]){
@@ -294,33 +292,33 @@ static int MAP_INDEX = 1;
                                                                       style:UIBarButtonItemStylePlain 
                                                                      target:self 
                                                                      action:@selector(showGraph:)];
-        self.navigationItem.rightBarButtonItem = graphItem;
+        
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refreshItem,graphItem,nil];
         [graphItem release];
     } else { // iPhone
         if(self.tabBarController.selectedIndex == MAP_INDEX) {
-            UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                                                                                         target:self
-                                                                                         action:@selector(refreshContent:)];
-            self.navigationItem.rightBarButtonItem = refreshItem;
-            [refreshItem release];
+            self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refreshItem,nil];
         } else {
             UIBarButtonItem *mapItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"world_bar"]
                                                                         style:UIBarButtonItemStylePlain
                                                                        target:self
                                                                        action:@selector(showMap:)];
-            self.navigationItem.rightBarButtonItem = mapItem;
+            
+            self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refreshItem,mapItem,nil];
             [mapItem release];
         }
     }
+    [refreshItem release];
 }
 
 - (IBAction)showMap:(id)sender{
     if([iPadHelper isIpad] == NO){
         self.tabBarController.selectedIndex = MAP_INDEX;
-        
         UINavigationController *navController = [self.tabBarController.viewControllers objectAtIndex:MAP_INDEX];
         StationInfoMapViewController *mapView = (StationInfoMapViewController *)[navController visibleViewController];
         [mapView selectStation:self.stationInfo];
+        
+        [self.navigationController popViewControllerAnimated:NO];
     }
     
 }
