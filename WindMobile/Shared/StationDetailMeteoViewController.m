@@ -72,16 +72,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
-    if ([iPadHelper isPresentedModally:self]) {
-        // we are presented modaly: add a dismiss button
-        self.navigationItem.rightBarButtonItem = nil;
-        UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
-                                                                                    target:self 
-                                                                                    action:@selector(dismissModalViewControllerAnimated:)];
-        self.navigationItem.rightBarButtonItem = buttonItem;
-        [buttonItem release];
-    }
-    
     // If we appear horizontally display the graph on iPhone
     if ([iPadHelper isIpad] == NO) {
         switch (self.interfaceOrientation) {
@@ -284,7 +274,7 @@
     // Remove refresh button
     self.navigationItem.rightBarButtonItem = nil;
     
-    // activity indicator
+    // Start animation
     UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
     [activityIndicator startAnimating];
     UIBarButtonItem *activityItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
@@ -297,7 +287,7 @@
     // Stop animation
     self.navigationItem.rightBarButtonItem = nil;
     
-    // Graph, Done or Map button
+    // Graph or refresh button
     if([iPadHelper isIpad]){
         UIBarButtonItem *graphItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"chart"]
                                                                       style:UIBarButtonItemStylePlain 
@@ -306,21 +296,11 @@
         self.navigationItem.rightBarButtonItem = graphItem;
         [graphItem release];
     } else { // iPhone
-        if ([iPadHelper isPresentedModally:self]) {
-            UIBarButtonItem *dismissButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
-                                                                                        target:self 
-                                                                                        action:@selector(dismissModalViewControllerAnimated:)];
-            
-            self.navigationItem.rightBarButtonItem = dismissButtonItem;
-            [dismissButtonItem release];
-        } else {
-            UIBarButtonItem *mapItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"world_bar"]
-                                                                          style:UIBarButtonItemStylePlain 
-                                                                         target:self 
-                                                                         action:@selector(showMap:)];
-            self.navigationItem.rightBarButtonItem = mapItem;
-            [mapItem release];
-        } 
+        UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                                     target:self
+                                                                                     action:@selector(refreshContent:)];
+        self.navigationItem.rightBarButtonItem = refreshItem;
+        [refreshItem release];
     }
 }
 

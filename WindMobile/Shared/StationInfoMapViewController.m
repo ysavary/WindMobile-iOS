@@ -217,17 +217,13 @@
     if ([self.mapView.selectedAnnotations count] == 0) {
         return;
     }
-    id<MKAnnotation> annotation = [self.mapView.selectedAnnotations objectAtIndex:0];
+    id<MKAnnotation> stationInfo = [self.mapView.selectedAnnotations objectAtIndex:0];
     
-    StationDetailMeteoViewController *meteo = [[StationDetailMeteoViewController alloc]initWithNibName:@"StationDetailMeteoViewController" bundle:nil];
-    meteo.stationInfo = annotation;
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:meteo];
-    [meteo release];
-    
-    // Show in modal view
-    [self presentModalViewController:nav animated:YES];
-    
-    [nav release];
+    StationDetailMeteoViewController *meteoVC = [[StationDetailMeteoViewController alloc] initWithNibName:@"StationDetailMeteoViewController" bundle:nil];
+    [meteoVC setStationInfo:stationInfo];
+    // push controller
+    [self.navigationController pushViewController:meteoVC animated:YES];
+    [meteoVC release];
 }
 
 - (void)settingsChanged:(NSNotification* )notif {

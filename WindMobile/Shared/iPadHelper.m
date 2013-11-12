@@ -18,10 +18,4 @@
     return NO;
 }
 
-+(BOOL)isPresentedModally:(UIViewController*)viewController {
-    return (viewController.navigationController != nil &&
-            viewController.navigationController.parentViewController != nil &&
-            viewController.navigationController.parentViewController.modalViewController == viewController.navigationController);
-}
-
 @end

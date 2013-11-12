@@ -59,8 +59,6 @@
 
 // Content
 - (IBAction)refreshContent:(id)sender;
-- (IBAction)showMap:(id)sender;
-- (IBAction)showActionSheet:(id)sender;
 - (IBAction)showGraph:(id)sender;
 @end
 

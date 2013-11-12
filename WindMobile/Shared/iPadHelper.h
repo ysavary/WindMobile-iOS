@@ -12,6 +12,5 @@
 }
 
 +(BOOL)isIpad;
-+(BOOL)isPresentedModally:(UIViewController*)viewController;
 
 @end

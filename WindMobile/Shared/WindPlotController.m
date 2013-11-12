@@ -293,38 +293,30 @@
 }
 
 - (void)startRefreshAnimation {
-    if([iPadHelper isIpad]){
-        // Remove refresh button
-        self.navigationItem.rightBarButtonItem = nil;
-        
-        // Start animation
-        UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-        [activityIndicator startAnimating];
-        UIBarButtonItem *activityItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
-        [activityIndicator release];
-        self.navigationItem.rightBarButtonItem = activityItem;
-        [activityItem release];
-    } else { // iPhone
-        [self.masterController startRefreshAnimation];
-    }    
+    // Remove refresh button
+    self.navigationItem.rightBarButtonItem = nil;
+    
+    // Start animation
+    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    [activityIndicator startAnimating];
+    UIBarButtonItem *activityItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+    [activityIndicator release];
+    self.navigationItem.rightBarButtonItem = activityItem;
+    [activityItem release];
     
     self.info.hidden = YES;
     self.scale.hidden = YES;
 }
 
 - (void)stopRefreshAnimation{
-    if([iPadHelper isIpad]){
-        // Stop animation
-        self.navigationItem.rightBarButtonItem = nil;
-        
-        UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                                                                                     target:self 
-                                                                                     action:@selector(refreshContent:)];
-        self.navigationItem.rightBarButtonItem = refreshItem;
-        [refreshItem release];
-    } else { // iPhone
-        [self.masterController stopRefreshAnimation];
-    }
+    // Stop animation
+    self.navigationItem.rightBarButtonItem = nil;
+    
+    UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                                 target:self 
+                                                                                 action:@selector(refreshContent:)];
+    self.navigationItem.rightBarButtonItem = refreshItem;
+    [refreshItem release];
     
     [self showInfo:self];
 }

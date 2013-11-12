@@ -122,9 +122,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(stations != nil && [stations count]>0){
-        StationDetailMeteoViewController *meteoVC = nil;
         StationInfo* stationInfo = [stations objectAtIndex:indexPath.row];
-        meteoVC = [[StationDetailMeteoViewController alloc] initWithNibName:@"StationDetailMeteoViewController" bundle:nil];
+        
+        StationDetailMeteoViewController *meteoVC = [[StationDetailMeteoViewController alloc] initWithNibName:@"StationDetailMeteoViewController" bundle:nil];
         [meteoVC setStationInfo:stationInfo];
         // push controller
         [self.navigationController pushViewController:meteoVC animated:YES];
