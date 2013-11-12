@@ -8,7 +8,6 @@
 
 #import "WindPlotController.h"
 #import "CPTGraphHostingView.h"
-#import "WMCellGraphTheme.h"
 #import "iPadHelper.h"
 #import "WindMobileHelper.h"
 
