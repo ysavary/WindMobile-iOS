@@ -56,6 +56,11 @@
     graph.plotAreaFrame.paddingBottom = 30;
     graph.plotAreaFrame.paddingRight = 40;
     
+    // Simple black plot area
+    graph.plotAreaFrame.fill=[[CPTFill alloc] initWithColor:[CPTColor blackColor]];
+    graph.plotAreaFrame.borderLineStyle = nil;
+    graph.plotAreaFrame.cornerRadius = 0;
+    
     // Setup plot space
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
     plotSpace.allowsUserInteraction = NO;
