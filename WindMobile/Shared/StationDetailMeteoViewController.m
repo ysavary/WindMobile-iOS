@@ -325,20 +325,6 @@ static int MAP_INDEX = 1;
     
 }
 
-- (IBAction)showActionSheet:(id)sender{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                             delegate:self 
-                                                    cancelButtonTitle:NSLocalizedStringFromTable(@"CANCEL", @"WindMobile", nil)
-                                               destructiveButtonTitle:nil 
-                                                    otherButtonTitles:NSLocalizedStringFromTable(@"SHOW_IN_MAPS", @"WindMobile",nil),
-                                  NSLocalizedStringFromTable(@"REFRESH", @"WindMobile",nil),
-                                  nil];
-    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-    [actionSheet showFromTabBar:self.tabBarController.tabBar];
-    [actionSheet release];
-    
-}
-
 - (IBAction)showGraph:(id)sender {
     if (self.navigationController != nil) {
         WindPlotController* graph = [[WindPlotController alloc] initWithNibName:@"WindPlotController" bundle:nil];
@@ -353,22 +339,6 @@ static int MAP_INDEX = 1;
         
         // Force navigation bar color to black 
         self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    }
-}
-
-#pragma mark -
-#pragma mark - UIActionSheetDelegate
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    switch (buttonIndex) {
-        case 0:
-            [self showMap:self];
-            break;
-        case 1:
-            [self refreshContent:self];
-            break;
-        default:
-            break;
     }
 }
 

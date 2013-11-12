@@ -14,7 +14,7 @@
 @class WindTrendChartViewController;
 @class WindPlotController;
 
-@interface StationDetailMeteoViewController : UIViewController<WMReSTClientDelegate, UIActionSheetDelegate> {
+@interface StationDetailMeteoViewController : UIViewController<WMReSTClientDelegate> {
     WMReSTClient* client;
     
     StationInfo* stationInfo;
