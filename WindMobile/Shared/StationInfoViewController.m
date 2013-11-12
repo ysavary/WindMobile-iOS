@@ -127,6 +127,7 @@
         StationDetailMeteoViewController *meteoVC = [[StationDetailMeteoViewController alloc] initWithNibName:@"StationDetailMeteoViewController" bundle:nil];
         [meteoVC setStationInfo:stationInfo];
         // push controller
+        meteoVC.hidesBottomBarWhenPushed = true;
         [self.navigationController pushViewController:meteoVC animated:YES];
         [meteoVC release];
     }
