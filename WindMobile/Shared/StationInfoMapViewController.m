@@ -13,7 +13,6 @@
 #import "MKMapView+ZoomLevel.h"
 #import "iPadHelper.h"
 #import "StationDetailMeteoViewController.h"
-#import "AppDelegate_Phone.h"
 
 @interface StationInfoMapViewController (private)
 - (void)addAnnotations:(NSArray *)annotations;

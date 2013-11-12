@@ -13,7 +13,6 @@
 #import "iPadHelper.h"
 #import "WindTrendChartViewController.h"
 #import "WindPlotController.h"
-#import "AppDelegate_Phone.h"
 #import "StationInfoMapViewController.h"
 
 #define DegreeToRadian(x) ((x) * M_PI / 180.0f)
@@ -35,6 +34,8 @@
 @synthesize windTrendCtrl;
 @synthesize windPlotView;
 @synthesize windPlotController;
+
+static int MAP_INDEX = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -296,23 +297,28 @@
         self.navigationItem.rightBarButtonItem = graphItem;
         [graphItem release];
     } else { // iPhone
-        UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                                                                                     target:self
-                                                                                     action:@selector(refreshContent:)];
-        self.navigationItem.rightBarButtonItem = refreshItem;
-        [refreshItem release];
+        if(self.tabBarController.selectedIndex == MAP_INDEX) {
+            UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                                         target:self
+                                                                                         action:@selector(refreshContent:)];
+            self.navigationItem.rightBarButtonItem = refreshItem;
+            [refreshItem release];
+        } else {
+            UIBarButtonItem *mapItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"world_bar"]
+                                                                        style:UIBarButtonItemStylePlain
+                                                                       target:self
+                                                                       action:@selector(showMap:)];
+            self.navigationItem.rightBarButtonItem = mapItem;
+            [mapItem release];
+        }
     }
 }
 
 - (IBAction)showMap:(id)sender{
     if([iPadHelper isIpad] == NO){
-        static int MAP_INDEX = 1;
+        self.tabBarController.selectedIndex = MAP_INDEX;
         
-        AppDelegate_Phone *appDelegate = [[UIApplication sharedApplication]delegate];
-        UITabBarController *tabBarController = appDelegate.tabBarController;
-        tabBarController.selectedIndex = MAP_INDEX;
-        
-        UINavigationController *navController = [tabBarController.viewControllers objectAtIndex:MAP_INDEX];
+        UINavigationController *navController = [self.tabBarController.viewControllers objectAtIndex:MAP_INDEX];
         StationInfoMapViewController *mapView = (StationInfoMapViewController *)[navController visibleViewController];
         [mapView selectStation:self.stationInfo];
     }
