@@ -8,7 +8,7 @@
 
 #import <Math.h>
 #import "IASKSettingsReader.h"
-
+#import "StationInfo+MKAnnotation.h"
 #import "StationInfoMapViewController.h"
 #import "MKMapView+ZoomLevel.h"
 #import "iPadHelper.h"
@@ -48,6 +48,13 @@
     [self refresh];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+
+    [self selectStation:nil];
+}
+
 - (void)viewDidUnload {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kIASKAppSettingChanged object:nil];
 }
@@ -69,7 +76,6 @@
         selectedStation = [station retain];
     }
     if (station != nil) {
-        self.mapView.selectedAnnotations = [NSArray arrayWithObject:station];
         [self centerAroundStation:selectedStation];
     }
 }
@@ -310,14 +316,14 @@
 
 #pragma mark - MKMapDelegate
 
-//- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
-//{
-//    if (selectedStation != nil) {
-//        [self.mapView addAnnotation:selectedStation];
-//        [self.mapView selectAnnotation:selectedStation animated:YES];
-//        [self centerAroundStation:selectedStation];
-//    }
-//}
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
+{
+    if (selectedStation != nil) {
+        [self.mapView addAnnotation:selectedStation];
+        [self.mapView selectAnnotation:selectedStation animated:YES];
+        [self centerAroundStation:selectedStation];
+    }
+}
 
 #pragma mark -
 #pragma mark Memory
