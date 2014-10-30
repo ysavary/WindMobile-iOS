@@ -272,43 +272,47 @@ static int MAP_INDEX = 1;
 }
 
 - (void)startRefreshAnimation{
-    // Start animation
-    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    [activityIndicator startAnimating];
-    UIBarButtonItem *activityItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
-    [activityIndicator release];
-    self.navigationItem.rightBarButtonItem = activityItem;
-    [activityItem release];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Start animation
+        UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+        [activityIndicator startAnimating];
+        UIBarButtonItem *activityItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+        [activityIndicator release];
+        self.navigationItem.rightBarButtonItem = activityItem;
+        [activityItem release];
+    });
 }
 
 - (void)stopRefreshAnimation{
-    UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                                                                                 target:self
-                                                                                 action:@selector(refreshContent:)];
-    
-    // Graph or refresh button
-    if([iPadHelper isIpad]){
-        UIBarButtonItem *graphItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"chart"]
-                                                                      style:UIBarButtonItemStylePlain 
-                                                                     target:self 
-                                                                     action:@selector(showGraph:)];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                                     target:self
+                                                                                     action:@selector(refreshContent:)];
         
-        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refreshItem,graphItem,nil];
-        [graphItem release];
-    } else { // iPhone
-        if(self.tabBarController.selectedIndex == MAP_INDEX) {
-            self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refreshItem,nil];
-        } else {
-            UIBarButtonItem *mapItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"world_bar"]
-                                                                        style:UIBarButtonItemStylePlain
-                                                                       target:self
-                                                                       action:@selector(showMap:)];
+        // Graph or refresh button
+        if([iPadHelper isIpad]){
+            UIBarButtonItem *graphItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"chart"]
+                                                                          style:UIBarButtonItemStylePlain 
+                                                                         target:self 
+                                                                         action:@selector(showGraph:)];
             
-            self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refreshItem,mapItem,nil];
-            [mapItem release];
+            self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refreshItem,graphItem,nil];
+            [graphItem release];
+        } else { // iPhone
+            if(self.tabBarController.selectedIndex == MAP_INDEX) {
+                self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refreshItem,nil];
+            } else {
+                UIBarButtonItem *mapItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"world_bar"]
+                                                                            style:UIBarButtonItemStylePlain
+                                                                           target:self
+                                                                           action:@selector(showMap:)];
+                
+                self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refreshItem,mapItem,nil];
+                [mapItem release];
+            }
         }
-    }
-    [refreshItem release];
+        [refreshItem release];
+    });
 }
 
 - (IBAction)showMap:(id)sender{

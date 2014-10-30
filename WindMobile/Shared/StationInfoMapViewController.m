@@ -39,6 +39,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsChanged:) name:kIASKAppSettingChanged object:nil];
     
     self.mapView.delegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
     [self refresh];
 }
 
@@ -177,29 +183,35 @@
     [self.mapView setCenterCoordinate:station.coordinate zoomLevel:zoomLevel animated:YES];
 }
 
-- (void)startRefreshAnimation{
-    // Remove refresh button
-    self.navigationItem.rightBarButtonItem = nil;
-    
-    // activity indicator
-    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    [activityIndicator startAnimating];
-    UIBarButtonItem *activityItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
-    [activityIndicator release];
-    self.navigationItem.rightBarButtonItem = activityItem;
-    [activityItem release];
+- (void)startRefreshAnimation
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Remove refresh button
+        self.navigationItem.rightBarButtonItem = nil;
+        
+        // activity indicator
+        UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+        [activityIndicator startAnimating];
+        UIBarButtonItem *activityItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+        [activityIndicator release];
+        self.navigationItem.rightBarButtonItem = activityItem;
+        [activityItem release];
+    });
 }
 
-- (void)stopRefreshAnimation{
-    // Stop animation
-    self.navigationItem.rightBarButtonItem = nil;
-    
-    // Put Refresh button on the top left
-    UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                                                                                 target:self 
-                                                                                 action:@selector(refreshAction:)];
-    self.navigationItem.rightBarButtonItem = refreshItem;
-    [refreshItem release];
+- (void)stopRefreshAnimation
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Stop animation
+        self.navigationItem.rightBarButtonItem = nil;
+        
+        // Put Refresh button on the top left
+        UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                                     target:self 
+                                                                                     action:@selector(refreshAction:)];
+        self.navigationItem.rightBarButtonItem = refreshItem;
+        [refreshItem release];
+    });
 }
 
 - (void)refresh {
@@ -295,6 +307,17 @@
     
     return pinView;
 }
+
+#pragma mark - MKMapDelegate
+
+//- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
+//{
+//    if (selectedStation != nil) {
+//        [self.mapView addAnnotation:selectedStation];
+//        [self.mapView selectAnnotation:selectedStation animated:YES];
+//        [self centerAroundStation:selectedStation];
+//    }
+//}
 
 #pragma mark -
 #pragma mark Memory

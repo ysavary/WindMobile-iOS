@@ -296,33 +296,39 @@
     [WMReSTClient showError:title message:message];
 }
 
-- (void)startRefreshAnimation {
-    // Remove refresh button
-    self.navigationItem.rightBarButtonItem = nil;
-    
-    // Start animation
-    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    [activityIndicator startAnimating];
-    UIBarButtonItem *activityItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
-    [activityIndicator release];
-    self.navigationItem.rightBarButtonItem = activityItem;
-    [activityItem release];
-    
-    self.info.hidden = YES;
-    self.scale.hidden = YES;
+- (void)startRefreshAnimation
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Remove refresh button
+        self.navigationItem.rightBarButtonItem = nil;
+        
+        // Start animation
+        UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+        [activityIndicator startAnimating];
+        UIBarButtonItem *activityItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+        [activityIndicator release];
+        self.navigationItem.rightBarButtonItem = activityItem;
+        [activityItem release];
+        
+        self.info.hidden = YES;
+        self.scale.hidden = YES;
+    });
 }
 
-- (void)stopRefreshAnimation{
-    // Stop animation
-    self.navigationItem.rightBarButtonItem = nil;
-    
-    UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                                                                                 target:self 
-                                                                                 action:@selector(refreshContent:)];
-    self.navigationItem.rightBarButtonItem = refreshItem;
-    [refreshItem release];
-    
-    [self showInfo:self];
+- (void)stopRefreshAnimation
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Stop animation
+        self.navigationItem.rightBarButtonItem = nil;
+        
+        UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                                     target:self 
+                                                                                     action:@selector(refreshContent:)];
+        self.navigationItem.rightBarButtonItem = refreshItem;
+        [refreshItem release];
+        
+        [self showInfo:self];
+    });
 }
 
 #pragma mark -

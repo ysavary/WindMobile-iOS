@@ -62,30 +62,36 @@
     }
 }
 
-- (void)startRefreshAnimation{
-    NSRange range;
-    range.location = 0;
-    range.length = [toolbar.items count] -1;
-    NSArray *items = [toolbar.items subarrayWithRange:range];
-    
-    [toolbar setItems:[items arrayByAddingObject:activityItem] animated:NO];
-    
-    [(UIActivityIndicatorView *)activityItem.customView startAnimating];
-    
-    // Disable stations popover button
-    [stationsItem setEnabled:NO];    
+- (void)startRefreshAnimation
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSRange range;
+        range.location = 0;
+        range.length = [toolbar.items count] -1;
+        NSArray *items = [toolbar.items subarrayWithRange:range];
+        
+        [toolbar setItems:[items arrayByAddingObject:activityItem] animated:NO];
+        
+        [(UIActivityIndicatorView *)activityItem.customView startAnimating];
+        
+        // Disable stations popover button
+        [stationsItem setEnabled:NO];
+    });
 }
 
-- (void)stopRefreshAnimation{
-    NSRange range;
-    range.location = 0;
-    range.length = [toolbar.items count] -1;
-    NSArray *items = [toolbar.items subarrayWithRange:range];
-    
-    [toolbar setItems:[items arrayByAddingObject:refreshItem] animated:NO];
-    
-    // Enable stations popover button
-    [stationsItem setEnabled:YES];
+- (void)stopRefreshAnimation
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSRange range;
+        range.location = 0;
+        range.length = [toolbar.items count] -1;
+        NSArray *items = [toolbar.items subarrayWithRange:range];
+        
+        [toolbar setItems:[items arrayByAddingObject:refreshItem] animated:NO];
+        
+        // Enable stations popover button
+        [stationsItem setEnabled:YES];
+    });
 }
 
 - (void)showSettingsPopover:(id)sender {
