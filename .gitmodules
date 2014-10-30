@@ -3,7 +3,7 @@
 	url = https://github.com/core-plot/core-plot.git
 [submodule "CPS-ReST"]
 	path = CPS-ReST
-	url = https://github.com/stefanhp/CPS-ReST.git
+	url = https://github.com/ysavary/CPS-ReST.git
 [submodule "InAppSettingsKit"]
 	path = InAppSettingsKit
 	url = https://github.com/futuretap/InAppSettingsKit.git
