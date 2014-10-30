@@ -9,7 +9,7 @@
 #import "StationInfo.h"
 #import <MapKit/MapKit.h>
 
-@interface StationInfo (MKAnnotation) //<MKAnnotation>
+@interface StationInfo (MKAnnotation) <MKAnnotation>
 
 - (NSString *)title;
 - (NSString *)subtitle;
