@@ -617,7 +617,7 @@
 		F8EC162C12E8666D00B268BD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F8EC163312E8666D00B268BD /* CPSReST */,
+				F8EC163312E8666D00B268BD /* CPSReST.framework */,
 				F8EC163512E8666D00B268BD /* libCPSReST.a */,
 				F8EC163712E8666D00B268BD /* Test-CPSRest-Framework.octest */,
 				F8EC163912E8666D00B268BD /* Test-CPSReST-Library.octest */,
@@ -709,7 +709,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = "la-haut.info";
+				ORGANIZATIONNAME = "Yann Savary";
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = LLVRE72CM9;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "WindMobile" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -745,10 +750,9 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		F8EC163312E8666D00B268BD /* CPSReST */ = {
+		F8EC163312E8666D00B268BD /* CPSReST.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = CPSReST;
 			path = CPSReST.framework;
 			remoteRef = F8EC163212E8666D00B268BD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -1000,6 +1004,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1012,6 +1018,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = WindMobile;
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../core-plot/framework/** ../CPS-ReST/**";
 			};
 			name = Debug;
@@ -1020,6 +1027,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WindMobile_Prefix.pch;
@@ -1030,6 +1039,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = WindMobile;
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../core-plot/framework/** ../CPS-ReST/**";
 				VALIDATE_PRODUCT = NO;
 			};
@@ -1056,7 +1066,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WindMobile_Prefix.pch;
@@ -1067,6 +1078,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = WindMobile;
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "../core-plot/framework/** ../CPS-ReST/**";
 				VALIDATE_PRODUCT = YES;
