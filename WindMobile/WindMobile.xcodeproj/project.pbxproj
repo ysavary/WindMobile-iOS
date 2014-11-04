@@ -13,6 +13,7 @@
 		2860E328111B887F00E27156 /* AppDelegate_Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E326111B887F00E27156 /* AppDelegate_Phone.m */; };
 		2860E32E111B888700E27156 /* AppDelegate_Pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E32C111B888700E27156 /* AppDelegate_Pad.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		AA01D0851A0965D400503508 /* Images-3.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA01D0841A0965D400503508 /* Images-3.xcassets */; };
 		AA2032E2134EF4A5008571BE /* world_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = AA2032E0134EF4A5008571BE /* world_bar.png */; };
 		AA2032E3134EF4A5008571BE /* world_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA2032E1134EF4A5008571BE /* world_bar@2x.png */; };
 		AA2032F5134EF99C008571BE /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA2032F4134EF99C008571BE /* settings@2x.png */; };
@@ -29,9 +30,6 @@
 		AAA44A9C1345FBC9005CAB99 /* led_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA44A9B1345FBC9005CAB99 /* led_red@2x.png */; };
 		AAA44AA31345FC70005CAB99 /* led_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA44AA11345FC70005CAB99 /* led_green@2x.png */; };
 		AAA44AA41345FC70005CAB99 /* led_orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA44AA21345FC70005CAB99 /* led_orange@2x.png */; };
-		AAA9D9E91825691D00F04343 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA9D9E81825691D00F04343 /* Default.png */; };
-		AAA9D9F01825692400F04343 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA9D9EF1825692400F04343 /* Default@2x.png */; };
-		AAA9D9F21825692600F04343 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA9D9F11825692600F04343 /* Default-568h@2x.png */; };
 		AAC3DD48131C0D81003CEF97 /* AppDelegate_WindMobile.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC3DD47131C0D81003CEF97 /* AppDelegate_WindMobile.m */; };
 		AAC957E21826AE6B006B53FF /* IASKAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC957C41826AE6B006B53FF /* IASKAppSettingsViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		AAC957E31826AE6B006B53FF /* IASKAppSettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC957C61826AE6B006B53FF /* IASKAppSettingsWebViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -76,13 +74,6 @@
 		F866573F13096A2100CF97D8 /* GraphData.m in Sources */ = {isa = PBXBuildFile; fileRef = F866565E13090CF000CF97D8 /* GraphData.m */; };
 		F866575613096C5D00CF97D8 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8F1722F117910480046800F /* libCorePlot-CocoaTouch.a */; };
 		F866576113096CE700CF97D8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
-		F88F6B4412E88D96009C2B8D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = F88F6B3D12E88D96009C2B8D /* Icon-72.png */; };
-		F88F6B4512E88D96009C2B8D /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = F88F6B3E12E88D96009C2B8D /* Icon-Small-50.png */; };
-		F88F6B4612E88D96009C2B8D /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = F88F6B3F12E88D96009C2B8D /* Icon-Small.png */; };
-		F88F6B4712E88D96009C2B8D /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F88F6B4012E88D96009C2B8D /* Icon-Small@2x.png */; };
-		F88F6B4812E88D96009C2B8D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F88F6B4112E88D96009C2B8D /* Icon.png */; };
-		F88F6B4912E88D96009C2B8D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F88F6B4212E88D96009C2B8D /* Icon@2x.png */; };
-		F88F6B4A12E88D96009C2B8D /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = F88F6B4312E88D96009C2B8D /* iTunesArtwork */; };
 		F8B88BA4130DDCCE004FAF3C /* chart.png in Resources */ = {isa = PBXBuildFile; fileRef = F8B88BA3130DDCCE004FAF3C /* chart.png */; };
 		F8B88BAE130DDF1F004FAF3C /* chart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8B88BAD130DDF1F004FAF3C /* chart@2x.png */; };
 		F8BDFA2411A1D73F0069A43E /* WMReSTClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BDFA2311A1D73F0069A43E /* WMReSTClient.m */; };
@@ -172,6 +163,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* WindMobile_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindMobile_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* WindMobile-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WindMobile-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		AA01D0841A0965D400503508 /* Images-3.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Images-3.xcassets"; path = "WindMobile/Images-3.xcassets"; sourceTree = "<group>"; };
 		AA2032E0134EF4A5008571BE /* world_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world_bar.png; sourceTree = "<group>"; };
 		AA2032E1134EF4A5008571BE /* world_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world_bar@2x.png"; sourceTree = "<group>"; };
 		AA2032F4134EF99C008571BE /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
@@ -189,9 +181,6 @@
 		AAA44A9B1345FBC9005CAB99 /* led_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "led_red@2x.png"; sourceTree = "<group>"; };
 		AAA44AA11345FC70005CAB99 /* led_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "led_green@2x.png"; sourceTree = "<group>"; };
 		AAA44AA21345FC70005CAB99 /* led_orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "led_orange@2x.png"; sourceTree = "<group>"; };
-		AAA9D9E81825691D00F04343 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		AAA9D9EF1825692400F04343 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		AAA9D9F11825692600F04343 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AAC3DD46131C0D81003CEF97 /* AppDelegate_WindMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_WindMobile.h; sourceTree = "<group>"; };
 		AAC3DD47131C0D81003CEF97 /* AppDelegate_WindMobile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_WindMobile.m; sourceTree = "<group>"; };
 		AAC957C31826AE6B006B53FF /* IASKAppSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKAppSettingsViewController.h; sourceTree = "<group>"; };
@@ -270,13 +259,6 @@
 		F86656E813092B1D00CF97D8 /* TestStationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestStationInfo.m; sourceTree = "<group>"; };
 		F8665720130931CE00CF97D8 /* TestStationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestStationData.h; sourceTree = "<group>"; };
 		F8665721130931CE00CF97D8 /* TestStationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestStationData.m; sourceTree = "<group>"; };
-		F88F6B3D12E88D96009C2B8D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		F88F6B3E12E88D96009C2B8D /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
-		F88F6B3F12E88D96009C2B8D /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
-		F88F6B4012E88D96009C2B8D /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
-		F88F6B4112E88D96009C2B8D /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		F88F6B4212E88D96009C2B8D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		F88F6B4312E88D96009C2B8D /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		F8B88BA3130DDCCE004FAF3C /* chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chart.png; sourceTree = "<group>"; };
 		F8B88BAD130DDF1F004FAF3C /* chart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chart@2x.png"; sourceTree = "<group>"; };
 		F8BD955911790F7200B7A614 /* CPS-ReST-Framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CPS-ReST-Framework.xcodeproj"; path = "../CPS-ReST/CPS-ReST-Framework/CPS-ReST-Framework.xcodeproj"; sourceTree = SOURCE_ROOT; };
@@ -372,7 +354,6 @@
 			children = (
 				8D1107310486CEB800E47090 /* WindMobile-Info.plist */,
 				F8549B73119DEF3D0010B513 /* WindMobile.strings */,
-				F88F6B3C12E88D96009C2B8D /* appIcon */,
 				F8A73FE611773CF40058A7C4 /* icons */,
 				F855F57C130558E00038A03B /* Helpers */,
 				F8FE115312F9A6AB006551F4 /* Data objects */,
@@ -389,9 +370,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				AAA9D9F11825692600F04343 /* Default-568h@2x.png */,
-				AAA9D9EF1825692400F04343 /* Default@2x.png */,
-				AAA9D9E81825691D00F04343 /* Default.png */,
+				AA01D0841A0965D400503508 /* Images-3.xcassets */,
 				F8549AAF119DC49C0010B513 /* helpers.txt */,
 				F8F17226117910480046800F /* CorePlot-CocoaTouch.xcodeproj */,
 				F8BD955911790F7200B7A614 /* CPS-ReST-Framework.xcodeproj */,
@@ -561,21 +540,6 @@
 				AA6BB26E1349BC9300353266 /* VMSegmentedControl.m */,
 			);
 			name = Graph;
-			sourceTree = "<group>";
-		};
-		F88F6B3C12E88D96009C2B8D /* appIcon */ = {
-			isa = PBXGroup;
-			children = (
-				F88F6B3D12E88D96009C2B8D /* Icon-72.png */,
-				F88F6B3E12E88D96009C2B8D /* Icon-Small-50.png */,
-				F88F6B3F12E88D96009C2B8D /* Icon-Small.png */,
-				F88F6B4012E88D96009C2B8D /* Icon-Small@2x.png */,
-				F88F6B4112E88D96009C2B8D /* Icon.png */,
-				F88F6B4212E88D96009C2B8D /* Icon@2x.png */,
-				F88F6B4312E88D96009C2B8D /* iTunesArtwork */,
-			);
-			name = appIcon;
-			path = Resources/appIcon;
 			sourceTree = "<group>";
 		};
 		F8A73FE611773CF40058A7C4 /* icons */ = {
@@ -795,13 +759,6 @@
 				F8549B75119DEF3D0010B513 /* WindMobile.strings in Resources */,
 				F858A650119E982C00FA26FA /* StationInfoViewController.xib in Resources */,
 				F8491CAC11A6A8B50076B32D /* Settings.bundle in Resources */,
-				F88F6B4412E88D96009C2B8D /* Icon-72.png in Resources */,
-				F88F6B4512E88D96009C2B8D /* Icon-Small-50.png in Resources */,
-				F88F6B4612E88D96009C2B8D /* Icon-Small.png in Resources */,
-				F88F6B4712E88D96009C2B8D /* Icon-Small@2x.png in Resources */,
-				F88F6B4812E88D96009C2B8D /* Icon.png in Resources */,
-				F88F6B4912E88D96009C2B8D /* Icon@2x.png in Resources */,
-				F88F6B4A12E88D96009C2B8D /* iTunesArtwork in Resources */,
 				F851AC7012F446D2002F851C /* settings.png in Resources */,
 				F8E9498812F487380036C165 /* WindPlotController.xib in Resources */,
 				F8E8A35412F8602000F2E84B /* world@2x.png in Resources */,
@@ -819,6 +776,7 @@
 				AAA44A9C1345FBC9005CAB99 /* led_red@2x.png in Resources */,
 				AAA44AA31345FC70005CAB99 /* led_green@2x.png in Resources */,
 				AAA44AA41345FC70005CAB99 /* led_orange@2x.png in Resources */,
+				AA01D0851A0965D400503508 /* Images-3.xcassets in Resources */,
 				AA2032E2134EF4A5008571BE /* world_bar.png in Resources */,
 				AA2032E3134EF4A5008571BE /* world_bar@2x.png in Resources */,
 				AA2032F5134EF99C008571BE /* settings@2x.png in Resources */,
@@ -828,9 +786,6 @@
 				AA2C8D221366D07C00D30E63 /* arrow_red.png in Resources */,
 				AA2C8D3C1366E51100D30E63 /* arrow_green@2x.png in Resources */,
 				AA2C8D3D1366E51100D30E63 /* arrow_red@2x.png in Resources */,
-				AAA9D9E91825691D00F04343 /* Default.png in Resources */,
-				AAA9D9F01825692400F04343 /* Default@2x.png in Resources */,
-				AAA9D9F21825692600F04343 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1004,6 +959,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -1027,6 +984,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -1066,6 +1025,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
