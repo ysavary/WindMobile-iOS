@@ -52,6 +52,8 @@
 @property (retain) IBOutlet UILabel *windHistoryMax;
 @property (retain) IBOutlet UILabel *airTemperature;
 @property (retain) IBOutlet UILabel *airHumidity;
+@property (retain) IBOutlet UILabel *airPressure;
+@property (retain) IBOutlet UILabel *rain;
 @property (retain) IBOutlet UIView *windTrendContainer;
 @property (retain) IBOutlet WindTrendChartViewController *windTrendCtrl;
 @property (retain) UIView *windPlotView;

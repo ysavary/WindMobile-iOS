@@ -256,6 +256,17 @@ static int MAP_INDEX = 1;
         self.airHumidity.text = NSLocalizedStringFromTable(@"NOT_AVAILABLE", @"WindMobile", nil);
     }
     
+    if(self.stationData.airPressure != nil){
+        self.airPressure.text = self.stationData.airPressure;
+    } else {
+        self.airPressure.text = NSLocalizedStringFromTable(@"NOT_AVAILABLE", @"WindMobile", nil);
+    }
+    
+    if(self.stationData.rain != nil){
+        self.rain.text = self.stationData.rain;
+    } else {
+        self.rain.text = NSLocalizedStringFromTable(@"NOT_AVAILABLE", @"WindMobile", nil);
+    }
     
     [self.view setNeedsDisplay];
 }

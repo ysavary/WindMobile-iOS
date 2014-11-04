@@ -36,6 +36,8 @@ typedef NSUInteger StationDataStatus;
 @property (readonly) NSString *windHistoryAverage;
 @property (readonly) NSString *airTemperature;
 @property (readonly) NSString *airHumidity;
+@property (readonly) NSString *airPressure;
+@property (readonly) NSString *rain;
 
 - (id)initWithDictionary:(NSDictionary *)aDictionary;
 

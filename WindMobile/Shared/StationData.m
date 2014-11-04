@@ -22,6 +22,8 @@
 #define STATION_DATA_WIND_HISTORY_AVERAGE_KEY @"windHistoryAverage"
 #define STATION_DATA_WIND_AIR_TEMPERATURE_KEY @"airTemperature"
 #define STATION_DATA_WIND_AIR_HUMIDITY_KEY @"airHumidity"
+#define STATION_DATA_WIND_AIR_PRESSURE_KEY @"airPressure"
+#define STATION_DATA_WIND_RAIN_KEY @"rain"
 
 #define STATION_DATA_VALUE_RED @"red"
 #define STATION_DATA_VALUE_ORANGE @"orange"
@@ -145,6 +147,18 @@
 - (NSString*)airHumidity{
     return [stationData objectForKey:STATION_DATA_WIND_AIR_HUMIDITY_KEY];
 }
+
+@dynamic airPressure;
+- (NSString*)airPressure{
+    return [stationData objectForKey:STATION_DATA_WIND_AIR_PRESSURE_KEY];
+}
+
+
+@dynamic rain;
+- (NSString*)rain{
+    return [stationData objectForKey:STATION_DATA_WIND_RAIN_KEY];
+}
+
 
 
 @end
