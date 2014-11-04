@@ -8,9 +8,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StationDetailMeteoViewController">
             <connections>
                 <outlet property="airHumidity" destination="34" id="36"/>
+                <outlet property="airPressure" destination="bex-Uy-ByS" id="Aaq-0h-uIS"/>
                 <outlet property="airTemperature" destination="33" id="37"/>
                 <outlet property="altitude" destination="7" id="38"/>
                 <outlet property="lastUpdated" destination="6" id="39"/>
+                <outlet property="rain" destination="6mg-OW-OWa" id="KeJ-Py-o67"/>
                 <outlet property="view" destination="1" id="3"/>
                 <outlet property="windAverage" destination="13" id="51"/>
                 <outlet property="windDirectionArrow" destination="35" id="42"/>
@@ -217,6 +219,48 @@
                     <rect key="frame" x="85" y="137" width="24" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="hPa" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="p2w-T4-jdw">
+                    <rect key="frame" x="267" y="368" width="41" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Pression" lineBreakMode="tailTruncation" minimumFontSize="10" id="d64-9L-uop">
+                    <rect key="frame" x="5" y="368" width="159" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PR" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="bex-Uy-ByS">
+                    <rect key="frame" x="185" y="361" width="50" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="24"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="l/m²" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="ECD-3p-z0U">
+                    <rect key="frame" x="267" y="394" width="41" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Pluie" lineBreakMode="tailTruncation" minimumFontSize="10" id="j5F-OQ-boM">
+                    <rect key="frame" x="5" y="394" width="159" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="RN" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="6mg-OW-OWa">
+                    <rect key="frame" x="185" y="387" width="50" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="24"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
